@@ -15,8 +15,8 @@
     crossorigin="anonymous"></script>
     <title>KOMODO</title>
 </head>
-<body class="bg-blue-50 h-[100em]">
-    <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md">
+<body id="body" class="bg-blue-50 h-[100em]">
+    <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-[30]">
         <div class="flex justify-between mx-auto px-4 sm:px-6 lg:px-[2rem] xl:px-[10rem]">
             <a href="index.php" class="text-2xl font-black"><span class="text-blue-500">KOM</span>ODO</a>
             <div class="hidden w-96 md:flex">
@@ -44,15 +44,15 @@
               <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
             </button>
           </div>
-            <div id="user-menu-dropdown" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden ease-out duration-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+            <div id="user-menu-dropdown" class="absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden ease-out duration-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" >
               <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
           </div>
         </div>
     </nav>
-    <div class="w-full flex justify-between ">
-      <div id="left-sidebar" class="hidden lg:block fixed left-0  ml-[1em] md:ml-[1.5em] xl:ml-[10em] mt-[3rem] lg:w-[10em] lg:ml-[2em] xl:w-[13em]">
+    <div class="w-full flex justify-between mt-[3rem] px-[1rem] lg:px-[13.5rem] xl:px-[25em]">
+      <div id="left-sidebar" class="hidden lg:block fixed left-0 ml-[1em] md:ml-[1.5em] xl:ml-[10em] lg:w-[10em] lg:ml-[2em] xl:w-[13em]">
         <aside aria-label="Sidebar">
             <div>
                 <p class="text-sm font-bold text-gray-500">MENU</p>
@@ -60,8 +60,8 @@
           <div class="overflow-y-auto py-4">
               <ul class="space-y-2">
                 <li>
-                    <a href="#" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white">
-                      <svg  aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <a id="home" href="../UTS/index.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white bg-blue-500 drop-shadow-md text-white">
+                      <svg id="home"  aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                         <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
                       </svg>
@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white">
+                    <a href="#" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white active:bg-blue-500 active:drop-shadow-md">
                       <svg  aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
                         <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z" clip-rule="evenodd" />
@@ -93,16 +93,16 @@
           </div>
         </aside>
       </div>
-      <div id="body" class="w-full lg:w-[38em] lg:ml-[13em] xl:w-[50em] xl:ml-[25em] mt-[3rem] px-[1rem]">
+      <div id="body" class="w-full">
           <div class="w-full bg-white shadow-lg rounded-md p-5">
             <div class="flex">
               <div id="vote" class="hidden mr-[1em] lg:block">
                 <div class="inline w-[2em] text-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-1 hover:text-blue-500 cursor-pointer">
                   <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
                 </svg>
                   <p class="font-bold">12</p>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mt-1 hover:text-red-500 cursor-pointer">
                   <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
                 </svg>
                 </div>
@@ -115,7 +115,6 @@
                       </button>
                       <div class="flex my-auto ml-3">
                         <div class="flex">
-                          <!-- <p class="text-gray-500">Posted by</p> -->
                           <p class="font-extrabold text-blue-500">John Thor</p>
                           <p class="my-auto text-gray-500 mx-2">•</p>
                           <p class="text-gray-500">1 day ago</p>
@@ -138,13 +137,13 @@
                     <div id="discussion-footer-wrapper" class="flex justify-between">
                       <div id="vote" class="flex my-3 lg:hidden">
                         <div class="flex">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hover:text-blue-500">
                             <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
                           </svg>
                           <p class="text-gray-500 mx-2">12</p>
                         </div>
                         <div class="flex">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 hover:text-red-500">
                             <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
                           </svg>
                         </div>
@@ -152,22 +151,22 @@
                       <div id="on-dekstop-footer" class="hidden flex lg:flex">
                         <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
                           <span class="sr-only">Open user menu</span>
-                          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                          <img class="h-7 w-7 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                         </button>
                         <div class="flex my-auto ml-3">
                           <div class="flex">
-                            <p class="my-auto text-gray-500">Posted by &nbsp</p>
-                            <p class="my-auto font-extrabold text-blue-500">John Thor</p>
-                            <p class="my-auto text-gray-500 ml-5">1 day ago</p>
+                            <p class="my-auto text-gray-500 text-sm">Posted by &nbsp</p>
+                            <p class="my-auto font-extrabold text-blue-500 text-sm">John Thor</p>
+                            <p class="my-auto text-gray-500 ml-5 text-sm">1 day ago</p>
                           </div>
                     </div>
                       </div>
                       <div id="discusison-footer-action" class="my-auto">
-                        <div id="comment" class="flex text-gray-500 ">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <div id="comment" class="flex text-gray-500 hover:text-blue-500 hover:fill-blue-500 cursor-pointer">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                           </svg>
-                          <p class="mx-2">5</p>
+                          <p class="my-auto mx-2 text-sm">5</p>
                         </div>
                       </div>
                     </div>
@@ -177,17 +176,34 @@
         </div>
       </div>
     </div>
-    <div id="right-sidebar" class="hidden lg:block fixed right-0 mt-[3rem] mr-[1em] md:mr-[1.5em] lg:mr-[2em] xl:mr-[10em] lg:w-[10em] xl:w-[13em]">
+    <div id="right-sidebar" class="hidden lg:block fixed right-0 mr-[1em] md:mr-[1.5em] lg:mr-[2em] xl:mr-[10em] lg:w-[10em] xl:w-[13em] drop-shadow-lg">
         <aside aria-label="Sidebar">
-          <div class="overflow-y-auto ">
+          <div class="overflow-y-auto">
               <ul class="space-y-2">
-                <li>
-                    <a href="#" class="flex items-center p-2 w-full text-base font-normal rounded-md transition duration-75 bg-blue-500 text-white">
-                      <svg class="w-6 h-6 text-white transition duration-75 "  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                <div>
+                    <button id="add-discussion" href="#" class="flex items-center justify-center p-2 w-full text-base font-normal rounded-md transition duration-75 bg-blue-500 text-white hover:bg-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                      <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
                     </svg>
-                      <span class="ml-3 font-bold">Add a New Forum</span>
-                    </a>
+                    </svg>
+                      <span class="text-md font-bold mt-0.5 ml-1">Add Discussion</span>
+                    </buttton>
+              </div>  
+                <li>
+                    <div class="mt-[2rem] p-5 bg-white rounded-md">
+                      <div class="mb-5">
+                        <p class="text-md font-extrabold">Top Categories</p>
+                      </div>
+                      <div class="flex">
+                        <div>
+                          <a href="" class="font-bold text-blue-500">
+                              PHP
+                          </a>
+                        </div>
+                        <div class="ml-auto">
+                          <p class="text-gray-500">6</p>
+                      </div>
+                    </div>
                 </li>
               </ul>
           </div>
@@ -197,10 +213,12 @@
       <div class="fixed bottom-0 left-0 w-full bg-white shadow-lg">
         <div class="flex justify-between items-center px-10 py-3  text-gray-500">
             <div>
+              <a href="../UTS/index.php">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
                 <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                 <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
               </svg>
+              </a>
                 </div>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
@@ -216,10 +234,62 @@
         </div>
       </div>
     </div>
+    </div>
+    <div id="add-discussion-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity hidden">
+      <div class="fixed inset-0 z-10 overflow-y-auto ">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <!--
+            Modal panel, show/hide based on modal state.
+  
+            Entering: "ease-out duration-300"
+              From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              To: "opacity-100 translate-y-0 sm:scale-100"
+            Leaving: "ease-in duration-200"
+              From: "opacity-100 translate-y-0 sm:scale-100"
+              To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          -->
+          <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                  <!-- Heroicon name: outline/exclamation-triangle -->
+                  <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5v3.75m-9.303 3.376C1.83 19.126 2.914 21 4.645 21h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 4.88c-.866-1.501-3.032-1.501-3.898 0L2.697 17.626zM12 17.25h.007v.008H12v-.008z" />
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Deactivate account</h3>
+                  <div class="mt-2">
+                    <p class="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+              <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Deactivate</button>
+              <button id="add-discussion-cancel" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
     <script>
       $(document).ready(function(){
         $("#user-menu-button").click(function(){
           $("#user-menu-dropdown").toggleClass("hidden");
+        });
+      });
+      $(document).ready(function(){
+        $("#add-discussion").click(function(){
+          $("#add-discussion-modal").toggleClass("hidden");
+          $("#body").addClass("overflow-hidden");
+        });
+      });
+      $(document).ready(function(){
+        $("#add-discussion-cancel").click(function(){
+          $("#add-discussion-modal").toggleClass("hidden");
+          $("#body").removeClass("overflow-hidden");
         });
       });
     </script>
