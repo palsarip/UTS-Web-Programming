@@ -16,7 +16,7 @@
     <title>KOMODO</title>
 </head>
 <body id="body" class="bg-blue-50 h-[100em]">
-    <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-[30]">
+    <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-10">
         <div class="flex justify-between mx-auto px-4 sm:px-6 lg:px-[2rem] xl:px-[10rem]">
             <a href="index.php" class="text-2xl font-black"><span class="text-blue-500">KOM</span>ODO</a>
             <div class="hidden w-96 md:flex">
@@ -181,7 +181,7 @@
           <div class="overflow-y-auto">
               <ul class="space-y-2">
                 <div>
-                    <button id="add-discussion" href="#" class="flex items-center justify-center p-2 w-full text-base font-normal rounded-md transition duration-75 bg-blue-500 text-white hover:bg-blue-600">
+                    <button id="add-discussion" href="#" class="flex items-center justify-center p-2 w-full text-base font-normal rounded-md bg-gradient-to-r from-sky-500 to-blue-500 text-white hover:bg-blue-600 ">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                       <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
                     </svg>
@@ -235,39 +235,74 @@
       </div>
     </div>
     </div>
-    <div id="add-discussion-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity hidden">
-      <div class="fixed inset-0 z-10 overflow-y-auto ">
+    <div id="add-discussion-modal" class="fixed inset-0 bg-gray-500 bg-opacity-80 transition-opacity hidden z-20">
+      <div class="fixed inset-0  overflow-y-auto ">
         <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <!--
-            Modal panel, show/hide based on modal state.
-  
-            Entering: "ease-out duration-300"
-              From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              To: "opacity-100 translate-y-0 sm:scale-100"
-            Leaving: "ease-in duration-200"
-              From: "opacity-100 translate-y-0 sm:scale-100"
-              To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          -->
           <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              <div class="sm:flex sm:items-start">
-                <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                  <!-- Heroicon name: outline/exclamation-triangle -->
-                  <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5v3.75m-9.303 3.376C1.83 19.126 2.914 21 4.645 21h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 4.88c-.866-1.501-3.032-1.501-3.898 0L2.697 17.626zM12 17.25h.007v.008H12v-.008z" />
-                  </svg>
-                </div>
-                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                  <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Deactivate account</h3>
+              <div class="sm:block sm:items-start">
+                <div class="mt-3 text-center sm:mt-0 sm:text-left">
+                  <div class="flex items-center justify-between">
+                      <h3 class=" text-lg font-black leading-6 text-black" id="modal-title">New Discussion</h3>
+                    <div>
+                      <button id="add-discussion-quit" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+                          <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <hr class="my-4">
                   <div class="mt-2">
-                    <p class="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
+                    <form action="">
+                      <div class="mb-5">
+                        <label for="discussion-title"><span class="text-md font-extrabold text-black">Title</span></label>
+                        <input type="text" class="w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your title...">
+                        <p class="text-sm text-gray-500">The header must contain a maximum of 30 characters</p>
+                      </div>
+                      <div class="mb-5">
+                        <label for="discussion-description" class="block text-md font-extrabold text-black">Description</label>
+                          <textarea id="message" rows="4" class="block max-h-[10em] p-2.5 w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your description..."></textarea>
+                          <p class="text-sm text-gray-500">Give your theme some purpose. Description of what it will be used for</p>
+                      </div>
+                      <div class="mb-5">
+                        <label for="discussion-title"><span class="text-md font-extrabold text-black ">Categories</span></label>
+                        <!-- <input type="text" class="w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder='Start your question with "What", "How", "Why", etc.'> -->
+                        <ul class="items-center w-full mt-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                <div class="flex items-center pl-3">
+                                    <input id="vue-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="vue-checkbox-list" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Vue JS</label>
+                                </div>
+                            </li>
+                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                <div class="flex items-center pl-3">
+                                    <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="react-checkbox-list" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
+                                </div>
+                            </li>
+                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                <div class="flex items-center pl-3">
+                                    <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="angular-checkbox-list" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Angular</label>
+                                </div>
+                            </li>
+                            <li class="w-full dark:border-gray-600">
+                                <div class="flex items-center pl-3">
+                                    <input id="laravel-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="laravel-checkbox-list" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Laravel</label>
+                                </div>
+                            </li>
+                        </ul>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-              <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Deactivate</button>
-              <button id="add-discussion-cancel" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+              <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-sky-500 to-blue-500 px-4 py-2 text-base font-extrabold text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Create</button>
+              <button id="add-discussion-cancel" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
             </div>
           </div>
         </div>
@@ -288,6 +323,12 @@
       });
       $(document).ready(function(){
         $("#add-discussion-cancel").click(function(){
+          $("#add-discussion-modal").toggleClass("hidden");
+          $("#body").removeClass("overflow-hidden");
+        });
+      });
+      $(document).ready(function(){
+        $("#add-discussion-quit").click(function(){
           $("#add-discussion-modal").toggleClass("hidden");
           $("#body").removeClass("overflow-hidden");
         });
