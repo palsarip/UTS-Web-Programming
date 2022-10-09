@@ -19,6 +19,13 @@
     
     <title>KOMODO - Register</title>
 </head>
+<?php
+    session_start();
+    require_once("databases/db.php");
+    if(isset($_SESSION['ID_User'])){
+        header("Location: index.php");
+    }
+?>
 <body id="body" class="bg-blue-50 ">
     <div class="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
         <div class="bg-white text-black rounded-3xl shadow-lg w-full overflow-hidden" style="max-width:70em">
