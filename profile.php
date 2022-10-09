@@ -14,7 +14,7 @@
     src="https://code.jquery.com/jquery-3.6.1.js"
     integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
-    <title>KOMODO</title>
+    <title>KOMODO - Your Profile</title>
 </head>
 <?php
   session_start();
@@ -90,17 +90,17 @@
               <a href="./databases/process/logout_process.php" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
           </div>
     </nav>
-    <div class="w-full flex justify-between mt-[3rem] px-[1rem] lg:px-[13.5rem] xl:px-[25em] ">
+    <div class="w-full flex justify-between mt-[3rem] px-[1rem] lg:pl-[14em] lg:pr-[2em] xl:pl-[26em] xl:pr-[10em]">
       <div id="left-sidebar" class="hidden lg:block fixed left-0 ml-[1em] md:ml-[1.5em]  lg:w-[10em] lg:ml-[2em] xl:w-[13em] xl:ml-[10em]">
         <aside aria-label="Sidebar">
             <div>
                 <p class="text-sm font-bold text-gray-500">MENU</p>
               </div>
           <div class="overflow-y-auto py-4">
-              <ul class="space-y-2">
+          <ul class="space-y-2">
                 <li>
-                    <a id="home" href="../UTS/index.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white bg-blue-500 drop-shadow-md text-white">
-                      <svg id="home"  aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <a id="home" href="../UTS/index.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white active:bg-blue-500 active:drop-shadow-md">
+                      <svg id="home"  aria-hidden="true" class="w-6 h-6 text-gray-400 transition duration-75 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                         <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
                       </svg>
@@ -109,45 +109,22 @@
                 </li>
                 <li>
                     <a href="#" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white active:bg-blue-500 active:drop-shadow-md">
-                      <svg  aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                      <svg  aria-hidden="true" class="w-6 h-6 text-gray-400 transition duration-75 group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
                         <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z" clip-rule="evenodd" />
                       </svg>
                       <span class="ml-3 font-semibold">Explore</span>
                     </a>
                 </li>
-              </ul>
           </div>
         </aside>
       </div>
-      <div id="body" class="w-full">
-          <div class="w-full bg-white shadow-lg rounded-md p-5">
+      <div id="profile" class="w-full">
+          <div class="w-full bg-white shadow-lg rounded-xl p-[2em]">
             <div class="flex">
-              <div id="vote" class="hidden mr-[1em] lg:block">
-                <div class="inline w-[2em] text-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-1 hover:text-blue-500 cursor-pointer ease-in-out duration-200">
-                  <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
-                </svg>
-                  <p class="font-bold">12</p>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mt-1 hover:text-red-500 cursor-pointer ease-in-out duration-200">
-                  <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
-                </svg>
+                <div id="post-header">
+                
                 </div>
-              </div>
-              <div id="post-header">
-              <div id="wrapper" class="flex lg:hidden">
-                      <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
-                        <span class="sr-only">Open user menu</span>
-                        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                      </button>
-                      <div class="flex my-auto ml-3">
-                        <div class="flex">
-                          <p class="font-extrabold text-blue-500">John Thor</p>
-                          <p class="my-auto text-gray-500 mx-2">•</p>
-                          <p class="text-gray-500">1 day ago</p>
-                        </div>
-                    </div>
-              </div>
               <div id="discussion" class="">
                   <div id="disscussion-header" >
                     <div class="mt-2 text-lg font-extrabold">
@@ -203,67 +180,18 @@
         </div>
       </div>
     </div>
-    <div id="right-sidebar" class="hidden lg:block fixed right-0 mr-[1em] md:mr-[1.5em] lg:mr-[2em] xl:mr-[10em] lg:w-[10em] xl:w-[13em] drop-shadow-lg">
-        <aside aria-label="Sidebar">
-          <div class="overflow-y-auto">
-                <?php
-                  if(!isset($_SESSION['User_ID']) && !isset($_SESSION['Username'])){
-                    echo '';
-                  }else{
-                    echo '
-                    <div class="mb-[2rem]">
-                    <button id="add-discussion" href="#" class="flex items-center justify-center p-2 w-full text-base font-normal rounded-md bg-gradient-to-r from-sky-500 to-blue-500 text-white hover:bg-blue-600 ">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
-                      </svg>
-                      </svg>
-                        <span class="text-md font-bold mt-0.5 ml-1">Add Discussion</span>
-                    </buttton>
-                    </div>  
-                    ';
-                  }
-                  ?>
-                    <div class="p-5 bg-white rounded-md">
-                      <div class="mb-5">
-                        <p class="text-md font-extrabold">Top Categories</p>
-                      </div>
-                      <div class="flex">
-                        <div>
-                          <a href="" class="font-bold text-blue-500">
-                              PHP
-                          </a>
-                        </div>
-                        <div class="ml-auto">
-                          <p class="text-gray-500">6</p>
-                      </div>
-                    </div>
-          </div>
-        </aside>
       </div>
     <div id="on-mobile-navbar" class="lg:hidden">
       <div class="fixed bottom-0 left-0 w-full bg-white shadow-lg">
-        <div class="flex justify-between items-center px-10 py-3  text-gray-500">
+        <div class="flex justify-between items-center px-10 py-3 sm:px-[10em] text-gray-500">
             <div>
-              <a href="../UTS/index.php" class="text-blue-500">
+              <a href="../UTS/index.php" class="text-gray-500">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
                 <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                 <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
               </svg>
               </a>
                 </div>
-            <div>
-              <button id="on-mobile-add-discussion" type="button" class="flex">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="url(#grad1)" stroke="none" class="w-8 h-8">
-                  <defs>
-                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
-                    </linearGradient>
-                  </defs>
-                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
-                </svg>
-              </button>
-            </div>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
                 <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />

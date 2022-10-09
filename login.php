@@ -17,7 +17,7 @@
     integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
     
-    <title>KOMODO - Register</title>
+    <title>KOMODO - Login</title>
 </head>
 <?php
     session_start();
