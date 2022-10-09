@@ -18,5 +18,5 @@
     $result = $db->prepare($sql);
     $result->execute([$first_name, $last_name, $username, $email, $en_pass]);
 
-    header("Location: login.php");
+    header("Location: ../../login.php");
 ?>

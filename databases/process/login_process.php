@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once("db.php");
+    require_once("../db.php");
 
     // Data from Form
     $username = $_POST['Username'];
@@ -23,9 +23,9 @@
             echo "Wrong password";
         } else {
             // Login Success, set SESSION DATA
-            $_SESSION['ID_User'] = $row['ID'];
+            $_SESSION['ID_User'] = $row['ID_User'];
             $_SESSION['Username'] = $row['Username'];
-            header("Location: index.php");
+            header("Location: ../../index.php");
         }
     }
 ?>
