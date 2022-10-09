@@ -1,7 +1,7 @@
 <?php
     // db.php
     // DB Credentials
-    define('DSN', 'mysql:host=localhost;dbname=UTS');
+    define('DSN', 'mysql:host=localhost;dbname=uts');
     define('DB_USER', 'root');
     define('DB_PASS', '');
 

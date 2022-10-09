@@ -1,24 +1,22 @@
 <?php
-    require_once("db.php");
+    require_once("../db.php");
 
     // Data from Form
+    $first_name = $_POST['First_Name'];
+    $last_name = $_POST['Last_Name'];
     $username = $_POST['Username'];
-    $Nama     = $_POST['Nama_lengkap'];
-    $password = $_POST['Password'];
-    $gender   = $_POST['Gender'];
-    $alamat   = $_POST['Alamat'];
-    $Nomortel = $_POST['Nomor_tel'];
     $email    = $_POST['Email'];
+    $password = $_POST['Password'];
 
     // Encrypt the Password
     $en_pass = password_hash($password, PASSWORD_BCRYPT);
 
     // SQL Query
-    $sql = "INSERT INTO user (Username, Nama_lengkap, Password, Gender, Alamat, Nomor_tel, Email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO user (First_Name, Last_Name, Username, Email, Password) VALUES (?, ?, ?, ?, ?)";
 
     // Execute Query
     $result = $db->prepare($sql);
-    $result->execute([$username, $nama, $en_pass, $gender, $alamat, $Nomortel, $email]);
+    $result->execute([$first_name, $last_name, $username, $email, $en_pass]);
 
     header("Location: login.php");
 ?>
