@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./config/tailwind.config.js?version=1"></script>
@@ -16,7 +17,7 @@
     <title>Vamos a Juntarmos</title>
 </head>
 <body id="body" class="bg-blue-50 h-[100em]">
-    <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-[30]">
+    <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-10">
         <div class="flex justify-between mx-auto px-4 sm:px-6 lg:px-[2rem] xl:px-[10rem]">
             <a href="index.php" class="text-2xl font-black"><span class="text-blue-500">AM</span>IGO</a>
             <div class="hidden w-96 md:flex">
@@ -45,9 +46,9 @@
             </button> 
           </div>
             <div id="user-menu-dropdown" class="absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden ease-out duration-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" >
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
           </div>
         </div>
     </nav>
@@ -98,11 +99,11 @@
             <div class="flex">
               <div id="vote" class="hidden mr-[1em] lg:block">
                 <div class="inline w-[2em] text-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-1 hover:text-blue-500 cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-1 hover:text-blue-500 cursor-pointer ease-in-out duration-200">
                   <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
                 </svg>
                   <p class="font-bold">12</p>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mt-1 hover:text-red-500 cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mt-1 hover:text-red-500 cursor-pointer ease-in-out duration-200">
                   <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
                 </svg>
                 </div>
@@ -137,13 +138,13 @@
                     <div id="discussion-footer-wrapper" class="flex justify-between">
                       <div id="vote" class="flex my-3 lg:hidden">
                         <div class="flex">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hover:text-blue-500">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hover:text-blue-500 ease-in-out duration-200">
                             <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
                           </svg>
                           <p class="text-gray-500 mx-2">12</p>
                         </div>
                         <div class="flex">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 hover:text-red-500">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 hover:text-red-500 ease-in-out duration-200">
                             <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
                           </svg>
                         </div>
@@ -180,8 +181,8 @@
         <aside aria-label="Sidebar">
           <div class="overflow-y-auto">
               <ul class="space-y-2">
-                <div>
-                    <button id="add-discussion" href="#" class="flex items-center justify-center p-2 w-full text-base font-normal rounded-md transition duration-75 bg-blue-500 text-white hover:bg-blue-600">
+                <div class="mb-[2rem]">
+                    <button id="add-discussion" href="#" class="flex items-center justify-center p-2 w-full text-base font-normal rounded-md bg-gradient-to-r from-sky-500 to-blue-500 text-white hover:bg-blue-600 ">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                       <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
                     </svg>
@@ -190,7 +191,7 @@
                     </buttton>
               </div>  
                 <li>
-                    <div class="mt-[2rem] p-5 bg-white rounded-md">
+                    <div class="p-5 bg-white rounded-md">
                       <div class="mb-5">
                         <p class="text-md font-extrabold">Top Categories</p>
                       </div>
@@ -213,7 +214,7 @@
       <div class="fixed bottom-0 left-0 w-full bg-white shadow-lg">
         <div class="flex justify-between items-center px-10 py-3  text-gray-500">
             <div>
-              <a href="../UTS/index.php">
+              <a href="../UTS/index.php" class="text-blue-500">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
                 <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                 <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
@@ -221,9 +222,17 @@
               </a>
                 </div>
             <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
-                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
-              </svg>
+              <button id="on-mobile-add-discussion" type="button" class="flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="url(#grad1)" stroke="none" class="w-8 h-8">
+                  <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+                </svg>
+              </button>
             </div>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
@@ -235,39 +244,118 @@
       </div>
     </div>
     </div>
-    <div id="add-discussion-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity hidden">
-      <div class="fixed inset-0 z-10 overflow-y-auto ">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <!--
-            Modal panel, show/hide based on modal state.
-  
-            Entering: "ease-out duration-300"
-              From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              To: "opacity-100 translate-y-0 sm:scale-100"
-            Leaving: "ease-in duration-200"
-              From: "opacity-100 translate-y-0 sm:scale-100"
-              To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          -->
+    <div id="add-discussion-modal" class="fixed inset-0 bg-gray-500 bg-opacity-80 transition-opacity hidden z-20">
+      <div class="fixed inset-0  overflow-y-auto ">
+        <div class="flex min-h-full items-end justify-center p-4 text-left sm:items-center sm:p-0">
           <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              <div class="sm:flex sm:items-start">
-                <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                  <!-- Heroicon name: outline/exclamation-triangle -->
-                  <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5v3.75m-9.303 3.376C1.83 19.126 2.914 21 4.645 21h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 4.88c-.866-1.501-3.032-1.501-3.898 0L2.697 17.626zM12 17.25h.007v.008H12v-.008z" />
-                  </svg>
-                </div>
-                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                  <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Deactivate account</h3>
+              <div class="sm:block sm:items-start">
+                <div class="mt-3 text-left sm:mt-0">
+                  <div class="flex items-center justify-between">
+                      <h3 class=" text-lg font-black leading-6 text-black" id="modal-title">New Discussion</h3>
+                    <div>
+                      <button id="add-discussion-quit" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+                          <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <hr class="my-4">
                   <div class="mt-2">
-                    <p class="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
+                    <form action="">
+                      <div class="mb-5">
+                        <label for="discussion-title"><span class="text-md font-extrabold text-black">Title</span></label>
+                        <input type="text" class="w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your title...">
+                        <p class="text-sm text-gray-500">The header must contain a maximum of 30 characters</p>
+                      </div>
+                      <div class="mb-5">
+                        <label for="discussion-description" class="block text-md font-extrabold text-black">Description</label>
+                          <textarea id="message" rows="4" class="block max-h-[10em] p-2.5 w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your description..."></textarea>
+                          <p class="text-sm text-gray-500">Give your theme some purpose. Description of what it will be used for</p>
+                      </div>
+                      <div class="mb-5">
+                        <label for="discussion-title"><span class="text-md font-extrabold text-black ">Categories</span></label>
+                        <!-- <input type="text" class="w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder='Start your question with "What", "How", "Why", etc.'> -->
+                        <!-- <ul class="items-center w-full mt-2 text-sm font-bold text-white bg-blue-500 rounded-lg border border-gray-200 sm:flex">
+                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                <div class="flex items-center pl-3">
+                                    <input id="vue-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="vue-checkbox-list" class="py-3 ml-2 w-full text-sm font-bole text-white">Vue JS</label>
+                                </div>
+                            </li>
+                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                <div class="flex items-center pl-3">
+                                    <input id="react-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="react-checkbox-list" class="py-3 ml-2 w-full text-sm font-bole text-white">React</label>
+                                </div>
+                            </li>
+                            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                                <div class="flex items-center pl-3">
+                                    <input id="angular-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="angular-checkbox-list" class="py-3 ml-2 w-full text-sm font-bole text-white">Angular</label>
+                                </div>
+                            </li>
+                            <li class="w-full dark:border-gray-600">
+                                <div class="flex items-center pl-3">
+                                    <input id="laravel-checkbox-list" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="laravel-checkbox-list" class="py-3 ml-2 w-full text-sm font-bole text-white">Laravel</label>
+                                </div>
+                            </li>
+                        </ul> -->
+                        <ul class="grid gap-6 w-full md:grid-cols-3 mt-1 ">
+                          <li>
+                            <input type="checkbox" id="php-option" value="php" class="hidden peer" required="">
+                              <label for="php-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
+                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" />
+                                <div class="w-full text-md font-semibold">PHP</div>
+                              </label>
+                          </li>
+                          <li>
+                            <input type="checkbox" id="c-option" value="c" class="hidden peer" required="">
+                              <label for="c-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500 hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
+                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" />
+                                <div class="w-full text-md font-semibold">C</div>
+                              </label>
+                          </li>
+                          <li>
+                            <input type="checkbox" id="javascript-option" value="javascript" class="hidden peer" required="">
+                              <label for="javascript-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
+                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+                                <div class="w-full text-md font-semibold">Javascript</div>
+                              </label>
+                          </li>
+                          <li>
+                            <input type="checkbox" id="java-option" value="java" class="hidden peer" required="">
+                              <label for="java-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
+                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+                                <div class="w-full text-md font-semibold">Java</div>
+                              </label>
+                          </li>
+                          <li>
+                            <input type="checkbox" id="python-option" value="python" class="hidden peer" required="">
+                              <label for="python-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
+                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
+                                <div class="w-full text-md font-semibold">Python</div>
+                              </label>
+                          </li>
+                          <li>
+                            <input type="checkbox" id="swift-option" value="swift" class="hidden peer" required="">
+                              <label for="swift-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500 hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
+                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" />
+                                <div class="w-full text-md font-semibold">Swift</div>
+                              </label>
+                          </li>
+                        </ul>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-              <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Deactivate</button>
-              <button id="add-discussion-cancel" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+              <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-sky-500 to-blue-500 px-4 py-2 text-base font-extrabold text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Create</button>
+              <button id="add-discussion-cancel" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
             </div>
           </div>
         </div>
@@ -288,6 +376,18 @@
       });
       $(document).ready(function(){
         $("#add-discussion-cancel").click(function(){
+          $("#add-discussion-modal").toggleClass("hidden");
+          $("#body").removeClass("overflow-hidden");
+        });
+      });
+      $(document).ready(function(){
+        $("#add-discussion-quit").click(function(){
+          $("#add-discussion-modal").toggleClass("hidden");
+          $("#body").removeClass("overflow-hidden");
+        });
+      });
+      $(document).ready(function(){
+        $("#on-mobile-add-discussion").click(function(){
           $("#add-discussion-modal").toggleClass("hidden");
           $("#body").removeClass("overflow-hidden");
         });
