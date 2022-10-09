@@ -13,12 +13,12 @@
     src="https://code.jquery.com/jquery-3.6.1.js"
     integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
-    <title>KOMODO</title>
+    <title>Vamos a Juntarmos</title>
 </head>
 <body id="body" class="bg-blue-50 h-[100em]">
     <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-[30]">
         <div class="flex justify-between mx-auto px-4 sm:px-6 lg:px-[2rem] xl:px-[10rem]">
-            <a href="index.php" class="text-2xl font-black"><span class="text-blue-500">KOM</span>ODO</a>
+            <a href="index.php" class="text-2xl font-black"><span class="text-blue-500">AM</span>IGO</a>
             <div class="hidden w-96 md:flex">
                 <form class="w-full max-w-md hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 ">   
                     <label class="sr-only">Search</label>
@@ -42,7 +42,7 @@
             <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
               <span class="sr-only">Open user menu</span>
               <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-            </button>
+            </button> 
           </div>
             <div id="user-menu-dropdown" class="absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden ease-out duration-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" >
               <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
@@ -153,7 +153,7 @@
                           <span class="sr-only">Open user menu</span>
                           <img class="h-7 w-7 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                         </button>
-                        <div class="flex my-auto ml-3">
+                        <div class="flex my-auto ml-3"> 
                           <div class="flex">
                             <p class="my-auto text-gray-500 text-sm">Posted by &nbsp</p>
                             <p class="my-auto font-extrabold text-blue-500 text-sm">John Thor</p>
