@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./config/tailwind.config.js?version=1"></script>
@@ -19,8 +20,15 @@
 <?php
   session_start();
   require_once("./databases/db.php");
+
+  $id = $_SESSION['ID_User'];
+  $sql = "SELECT * FROM user WHERE ID_User = ?";
+  $stmt = $db->prepare($sql);
+  $stmt->execute([$id]);
+  $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ?>
-<body id="body" class="bg-blue-50 h-[100em]">
+<body id="body" class="bg-blue-50 h-auto">
     <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-10">
         <div class="flex justify-between mx-auto px-4 sm:px-6 lg:px-[2rem] xl:px-[10rem]">
             <a href="index.php" class="text-2xl font-black"><span class="text-blue-500">KOM</span>ODO</a>
@@ -119,61 +127,72 @@
           </div>
         </aside>
       </div>
-      <div id="profile" class="w-full">
-          <div class="w-full bg-white shadow-lg rounded-xl p-[2em]">
-            <div class="flex">
-                <div id="post-header">
-                
+      <div id="profile" class="w-full rounded-md shadow-lg mb-[6em]">
+          <div class="w-full h-[8em] md:h-[9em] xl:h-[9.5em] bg-gradient-to-r from-sky-500 to-blue-500 rounded-t-md p-[1em] pt-[2em] ">
+            <div class="flex justify-end mr-0 md:mr-2 xl:mr-4">
+              <?php
+                echo '<span class="text-xl text-white font-extrabold">'.$row['Role'].'</span>';
+              ?>
+            </div>
+                <div id="profile-header" class="flex absolute">
+                    <div class=" ml-[0em] md:ml-[1em] xl:ml-[2em] mt-[3em] bg-gray-500 rounded-full border-4 xl:border-8 border-white shadow-md">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="profile" class="rounded-full w-[5.5em] h-[5.5em] md:w-[7.5em] md:h-[7.5em] xl:w-[10em] xl:h-[10em]">
+                    </div>
+                    <div class="my-auto">
+                      <div class="mt-[4em] mb-0 md:mb-1 ml-[0.5em] md:ml-[1em] xl:mt-[3em] flex">
+                        <?php
+                          echo '<h1 class="text-lg font-extrabold text-black xl:text-xl">'.$row['First_Name'].'</h1>'.'&nbsp'.'<h1 class="text-lg xl:text-xl font-extrabold text-black">'.$row['Last_Name'].'</h1>';
+                        ?>
+                      </div>
+                      <div class="ml-[0.5em] md:ml-[1em] ">
+                        <?php
+                          echo '<h1 class="text-sm xl:text-base font-normal text-gray-500">'.$row['Username'].'</h1>';
+                        ?>
+                      </div>
+                    </div>
                 </div>
-              <div id="discussion" class="">
-                  <div id="disscussion-header" >
-                    <div class="mt-2 text-lg font-extrabold">
-                      <p >What does the fox say?</p>
+            </div>
+            <div class="w-full h-[auto] bg-white rounded p-[1.5em] ">
+              <div class="flex mt-[5em]">
+                  <form action="">
+                    <div class="flex">
+
+                      <div class="w-1/2 pr-1.5 mb-5">
+                                    <label for="" class="text-xs font-semibold px-1">First name</label>
+                                    <div class="flex">
+                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
+                                        <input type="text" name="First_Name" class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500 ease-out duration-100" value="<?= $row['First_Name'] ?>" placeholder="" required>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 pl-1.5 mb-5">
+                                    <label for="" class="text-xs font-semibold px-1">Last name</label>
+                                    <div class="flex">
+                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
+                                        <input type="text" name="Last_Name"  class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500 ease-out duration-100" value="<?= $row['Last_Name'] ?>" placeholder="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex -mx-3">
+                                <div class="w-full px-3 mb-5">
+                                    <label for="" class="text-xs font-semibold px-1">Username</label>
+                                    <div class="flex">
+                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
+                                        <input type="text" name="Username"  class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 outline-none focus:border-blue-500 ease-out duration-100" value="<?= $row['Username'] ?>" placeholder="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex -mx-3">
+                                <div class="w-full px-3 mb-5">
+                                    <label for="" class="text-xs font-semibold px-1">Email</label>
+                                    <div class="flex">
+                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
+                                        <input type="email" name="Email" class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 outline-none focus:border-blue-500 ease-out duration-100" value="<?= $row['Email'] ?>" placeholder="" required>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
-                  </div>
-                  <div id="discussion-body" class="my-3">
-                    <div class="text-md font-normal">
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates non vero, at fugit ipsa tempora? Quam quisquam voluptatem dolor illum! Magnam quos impedit odit odio nam veniam eligendi, corporis porro.</p>
-                    </div>
-                  </div>
-                  <div id="discussion-footer">
-                    <hr>
-                    <div id="discussion-footer-wrapper" class="flex justify-between">
-                      <div id="vote" class="flex my-3 lg:hidden">
-                        <div class="flex">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hover:text-blue-500 ease-in-out duration-200">
-                            <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
-                          </svg>
-                          <p class="text-gray-500 mx-2">12</p>
-                        </div>
-                        <div class="flex">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 hover:text-red-500 ease-in-out duration-200">
-                            <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div id="on-dekstop-footer" class="hidden flex lg:flex">
-                        <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
-                          <span class="sr-only">Open user menu</span>
-                          <img class="h-7 w-7 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                        </button>
-                        <div class="flex my-auto ml-3">
-                          <div class="flex">
-                            <p class="my-auto text-gray-500 text-sm">Posted by &nbsp</p>
-                            <p class="my-auto font-extrabold text-blue-500 text-sm">John Thor</p>
-                            <p class="my-auto text-gray-500 ml-5 text-sm">1 day ago</p>
-                          </div>
-                    </div>
-                      </div>
-                      <div id="discusison-footer-action" class="my-auto">
-                        <div id="comment" class="flex text-gray-500 hover:text-blue-500 hover:fill-blue-500 cursor-pointer">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-                          </svg>
-                          <p class="my-auto mx-2 text-sm">5</p>
-                        </div>
-                      </div>
-                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -201,99 +220,6 @@
         </div>
       </div>
     </div>
-    </div>
-    <div id="add-discussion-modal" class="fixed inset-0 bg-gray-500 bg-opacity-80 transition-opacity hidden z-20">
-      <div class="fixed inset-0  overflow-y-auto ">
-        <div class="flex min-h-full items-end justify-center p-4 text-left sm:items-center sm:p-0">
-          <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              <div class="sm:block sm:items-start">
-                <div class="mt-3 text-left sm:mt-0">
-                  <div class="flex items-center justify-between">
-                      <h3 class=" text-lg font-black leading-6 text-black" id="modal-title">New Discussion</h3>
-                    <div>
-                      <button id="add-discussion-quit" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
-                          <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                  <hr class="my-4">
-                  <div class="mt-2">
-                    <form action="">
-                      <div class="mb-5">
-                        <label for="discussion-title"><span class="text-md font-extrabold text-black">Title</span></label>
-                        <input type="text" class="w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your title..." required>
-                        <p class="text-sm text-gray-500">The header must contain a maximum of 30 characters</p>
-                      </div>
-                      <div class="mb-5">
-                        <label for="discussion-description" class="block text-md font-extrabold text-black">Description</label>
-                          <textarea id="message" rows="4" class="block min-h-[5em] max-h-[10em] p-2.5 w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your description..." required></textarea>
-                          <p class="text-sm text-gray-500">Give your theme some purpose. Description of what it will be used for</p>
-                      </div>
-                      <div class="mb-5">
-                      
-                      </div>
-                      <div class="mb-5">
-                        <label for="discussion-title"><span class="text-md font-extrabold text-black ">Categories</span></label>
-                        <ul class="grid gap-6 w-full md:grid-cols-3 mt-1 ">
-                          <li>
-                            <input type="checkbox" id="php-option" value="php" class="hidden peer" required="">
-                              <label for="php-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
-                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" />
-                                <div class="w-full text-md font-semibold">PHP</div>
-                              </label>
-                          </li>
-                          <li>
-                            <input type="checkbox" id="c-option" value="c" class="hidden peer" required="">
-                              <label for="c-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500 hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
-                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" />
-                                <div class="w-full text-md font-semibold">C</div>
-                              </label>
-                          </li>
-                          <li>
-                            <input type="checkbox" id="javascript-option" value="javascript" class="hidden peer" required="">
-                              <label for="javascript-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
-                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
-                                <div class="w-full text-md font-semibold">Javascript</div>
-                              </label>
-                          </li>
-                          <li>
-                            <input type="checkbox" id="java-option" value="java" class="hidden peer" required="">
-                              <label for="java-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
-                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
-                                <div class="w-full text-md font-semibold">Java</div>
-                              </label>
-                          </li>
-                          <li>
-                            <input type="checkbox" id="python-option" value="python" class="hidden peer" required="">
-                              <label for="python-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
-                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
-                                <div class="w-full text-md font-semibold">Python</div>
-                              </label>
-                          </li>
-                          <li>
-                            <input type="checkbox" id="swift-option" value="swift" class="hidden peer" required="">
-                              <label for="swift-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500 hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
-                                <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" />
-                                <div class="w-full text-md font-semibold">Swift</div>
-                              </label>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button type="submit" class="inline-flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-sky-500 to-blue-500 px-4 py-2 text-base font-extrabold text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Create</button>
-                <button id="add-discussion-cancel" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-              </div>
-            </form>
-            </div>
-        </div>
-      </div>
     </div>
 </div>
     <script>
