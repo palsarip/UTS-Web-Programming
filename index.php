@@ -20,7 +20,7 @@
   session_start();
   require_once("./databases/db.php");
 ?>
-<body id="body" class="bg-blue-50 h-[100em]">
+<body id="body" class="bg-blue-50 h-[auto]">
     <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-10">
         <div class="flex justify-between mx-auto px-4 sm:px-6 lg:px-[2rem] xl:px-[10rem]">
             <a href="index.php" class="text-2xl font-black"><span class="text-blue-500">KOM</span>ODO</a>
@@ -90,7 +90,7 @@
               <a href="./databases/process/logout_process.php" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
           </div>
     </nav>
-    <div class="w-full flex justify-between mt-[3rem] px-[1rem] lg:px-[13.5rem] xl:px-[25em] ">
+    <div class="w-full flex justify-center mt-[3rem] px-[1rem] lg:px-[13.5rem] xl:px-[25em] ">
       <div id="left-sidebar" class="hidden lg:block fixed left-0 ml-[1em] md:ml-[1.5em]  lg:w-[10em] lg:ml-[2em] xl:w-[13em] xl:ml-[10em]">
         <aside aria-label="Sidebar">
             <div>
@@ -120,89 +120,182 @@
           </div>
         </aside>
       </div>
-      <div id="body" class="w-full">
-          <div class="w-full bg-white shadow-lg rounded-md p-5">
-            <div class="flex">
-              <div id="vote" class="hidden mr-[1em] lg:block">
-                <div class="inline w-[2em] text-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-1 hover:text-blue-500 cursor-pointer ease-in-out duration-200">
-                  <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
-                </svg>
-                  <p class="font-bold">12</p>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mt-1 hover:text-red-500 cursor-pointer ease-in-out duration-200">
-                  <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
-                </svg>
+
+      <div class="block">
+        <?php
+          $sql = "SELECT * FROM post";
+          $result = $db->prepare($sql);
+          $result->execute();
+
+          while($data = $result->fetch(PDO::FETCH_ASSOC)){
+            echo ' <div id="body" class="w-full mb-[3em]">
+            <div class=" bg-white shadow-lg rounded-md p-5">
+              <div class="flex">
+                <div id="vote" class="hidden mr-[1em] lg:block">
+                  <div class="inline w-[2em] text-center">
+                    <button type="button" onclick="likeController()">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-1 hover:text-blue-500 cursor-pointer ease-in-out duration-200">
+                      <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" /></svg>
+                    </button>
+                    <p class="font-bold">'.$data['Likes'].'</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mt-1 hover:text-red-500 cursor-pointer ease-in-out duration-200">
+                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" /></svg>
+                  </div>
                 </div>
-              </div>
-              <div id="post-header">
-              <div id="wrapper" class="flex lg:hidden">
-                      <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
-                        <span class="sr-only">Open user menu</span>
-                        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                      </button>
-                      <div class="flex my-auto ml-3">
-                        <div class="flex">
-                          <p class="font-extrabold text-blue-500">John Thor</p>
-                          <p class="my-auto text-gray-500 mx-2">•</p>
-                          <p class="text-gray-500">1 day ago</p>
-                        </div>
-                    </div>
-              </div>
-              <div id="discussion" class="">
-                  <div id="disscussion-header" >
-                    <div class="mt-2 text-lg font-extrabold">
-                      <p >What does the fox say?</p>
-                    </div>
-                  </div>
-                  <div id="discussion-body" class="my-3">
-                    <div class="text-md font-normal">
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates non vero, at fugit ipsa tempora? Quam quisquam voluptatem dolor illum! Magnam quos impedit odit odio nam veniam eligendi, corporis porro.</p>
-                    </div>
-                  </div>
-                  <div id="discussion-footer">
-                    <hr>
-                    <div id="discussion-footer-wrapper" class="flex justify-between">
-                      <div id="vote" class="flex my-3 lg:hidden">
-                        <div class="flex">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hover:text-blue-500 ease-in-out duration-200">
-                            <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
-                          </svg>
-                          <p class="text-gray-500 mx-2">12</p>
-                        </div>
-                        <div class="flex">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 hover:text-red-500 ease-in-out duration-200">
-                            <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div id="on-dekstop-footer" class="hidden flex lg:flex">
+                <div id="post-header">
+                <div id="wrapper" class="flex lg:hidden">
                         <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
                           <span class="sr-only">Open user menu</span>
-                          <img class="h-7 w-7 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                         </button>
                         <div class="flex my-auto ml-3">
                           <div class="flex">
-                            <p class="my-auto text-gray-500 text-sm">Posted by &nbsp</p>
-                            <p class="my-auto font-extrabold text-blue-500 text-sm">John Thor</p>
-                            <p class="my-auto text-gray-500 ml-5 text-sm">1 day ago</p>
+                            <p class="font-extrabold text-blue-500">'.$data['Created_By'].'</p>
+                            <p class="my-auto text-gray-500 mx-2">•</p>
                           </div>
-                    </div>
                       </div>
-                      <div id="discusison-footer-action" class="my-auto">
-                        <div id="comment" class="flex text-gray-500 hover:text-blue-500 hover:fill-blue-500 cursor-pointer">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-                          </svg>
-                          <p class="my-auto mx-2 text-sm">5</p>
+                </div>
+                <div id="discussion" class="w-[80vw] md:w-[90vw] lg:w-[50vw] xl:w-[35vw]">
+                    <div id="disscussion-header" >
+                      <div class="mt-2 text-lg font-extrabold">
+                        <p >'.$data['Title'].'</p>
+                      </div>
+                    </div>
+                    <div id="discussion-body" class="my-3">
+                      <div class="text-md font-normal">
+                        <p>'.$data['Description'].'</p>
+                      </div>
+                    </div>
+                    <div id="discussion-footer">
+                      <hr>
+                      <div id="discussion-footer-wrapper" class="flex justify-between">
+                        <div id="vote" class="flex my-3 lg:hidden">
+                          <div class="flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hover:text-blue-500 ease-in-out duration-200">
+                              <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
+                            </svg>
+                            <p class="text-gray-500 mx-2">'.$data['Likes'].'</p>
+                          </div>
+                          <div class="flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 hover:text-red-500 ease-in-out duration-200">
+                              <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div id="on-dekstop-footer" class="hidden flex lg:flex">
+                          <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
+                            <span class="sr-only">Open user menu</span>
+                            <img class="h-7 w-7 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                          </button>
+                          <div class="flex my-auto ml-3">
+                            <div class="flex">
+                              <p class="my-auto text-gray-500 text-sm">Posted by &nbsp</p>
+                              <p class="my-auto font-extrabold text-blue-500 text-sm">'.$data['Created_By'].'</p>
+                              <p class="my-auto text-gray-500 ml-5 text-sm">'.$data['Created_At'].'</p>
+                            </div>
+                      </div>
+                        </div>
+                        <div id="discusison-footer-action" class="my-auto">
+                          <div id="comment" class="flex text-gray-500 hover:text-blue-500 hover:fill-blue-500 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                            </svg>
+                            <p class="my-auto mx-2 text-sm">'.$data['Comments'].'</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        </div>';
+          }
+        ?>
       </div>
-    </div>
+      <!-- <div id="body" class="w-full mb-[3em]">
+            <div class="w-full bg-white shadow-lg rounded-md p-5">
+              <div class="flex">
+                <div id="vote" class="hidden mr-[1em] lg:block">
+                  <div class="inline w-[2em] text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-1 hover:text-blue-500 cursor-pointer ease-in-out duration-200">
+                    <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
+                  </svg>
+                    <p class="font-bold">12</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mt-1 hover:text-red-500 cursor-pointer ease-in-out duration-200">
+                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+                  </svg>
+                  </div>
+                </div>
+                <div id="post-header">
+                <div id="wrapper" class="flex lg:hidden">
+                        <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
+                          <span class="sr-only">Open user menu</span>
+                          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </button>
+                        <div class="flex my-auto ml-3">
+                          <div class="flex">
+                            <p class="font-extrabold text-blue-500">John Thor</p>
+                            <p class="my-auto text-gray-500 mx-2">•</p>
+                            <p class="text-gray-500">1 day ago</p>
+                          </div>
+                      </div>
+                </div>
+                <div id="discussion" class="">
+                    <div id="disscussion-header" >
+                      <div class="mt-2 text-lg font-extrabold">
+                        <p >What does the fox say?</p>
+                      </div>
+                    </div>
+                    <div id="discussion-body" class="my-3">
+                      <div class="text-md font-normal">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates non vero, at fugit ipsa tempora? Quam quisquam voluptatem dolor illum! Magnam quos impedit odit odio nam veniam eligendi, corporis porro.</p>
+                      </div>
+                    </div>
+                    <div id="discussion-footer">
+                      <hr>
+                      <div id="discussion-footer-wrapper" class="flex justify-between">
+                        <div id="vote" class="flex my-3 lg:hidden">
+                          <div class="flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hover:text-blue-500 ease-in-out duration-200">
+                              <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
+                            </svg>
+                            <p class="text-gray-500 mx-2">12</p>
+                          </div>
+                          <div class="flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 hover:text-red-500 ease-in-out duration-200">
+                              <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div id="on-dekstop-footer" class="hidden flex lg:flex">
+                          <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
+                            <span class="sr-only">Open user menu</span>
+                            <img class="h-7 w-7 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                          </button>
+                          <div class="flex my-auto ml-3">
+                            <div class="flex">
+                              <p class="my-auto text-gray-500 text-sm">Posted by &nbsp</p>
+                              <p class="my-auto font-extrabold text-blue-500 text-sm">John Thor</p>
+                              <p class="my-auto text-gray-500 ml-5 text-sm">1 day ago</p>
+                            </div>
+                      </div>
+                        </div>
+                        <div id="discusison-footer-action" class="my-auto">
+                          <div id="comment" class="flex text-gray-500 hover:text-blue-500 hover:fill-blue-500 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                            </svg>
+                            <p class="my-auto mx-2 text-sm">5</p>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div> -->
     <div id="right-sidebar" class="hidden lg:block fixed right-0 mr-[1em] md:mr-[1.5em] lg:mr-[2em] xl:mr-[10em] lg:w-[10em] xl:w-[13em] drop-shadow-lg">
         <aside aria-label="Sidebar">
           <div class="overflow-y-auto">
@@ -277,12 +370,13 @@
     <div id="add-discussion-modal" class="fixed inset-0 bg-gray-500 bg-opacity-80 transition-opacity hidden z-20">
       <div class="fixed inset-0  overflow-y-auto ">
         <div class="flex min-h-full items-end justify-center p-4 text-left sm:items-center sm:p-0">
+          <form action="./databases/process/post_process.php" method="POST">
           <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div class="sm:block sm:items-start">
                 <div class="mt-3 text-left sm:mt-0">
                   <div class="flex items-center justify-between">
-                      <h3 class=" text-lg font-black leading-6 text-black" id="modal-title">New Discussion</h3>
+                    <h3 class=" text-lg font-black leading-6 text-black" id="modal-title">New Discussion</h3>
                     <div>
                       <button id="add-discussion-quit" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
@@ -293,66 +387,74 @@
                   </div>
                   <hr class="my-4">
                   <div class="mt-2">
-                    <form action="">
                       <div class="mb-5">
                         <label for="discussion-title"><span class="text-md font-extrabold text-black">Title</span></label>
-                        <input type="text" class="w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your title..." required>
+                        <input type="text" name="Title"  class="form-control w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your title..." required>
                         <p class="text-sm text-gray-500">The header must contain a maximum of 30 characters</p>
                       </div>
                       <div class="mb-5">
                         <label for="discussion-description" class="block text-md font-extrabold text-black">Description</label>
-                          <textarea id="message" rows="4" class="block min-h-[5em] max-h-[10em] p-2.5 w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your description..." required></textarea>
+                          <textarea id="message" name="Description" rows="4" class="form-control block min-h-[5em] max-h-[10em] p-2.5 w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your description..." required></textarea>
                           <p class="text-sm text-gray-500">Give your theme some purpose. Description of what it will be used for</p>
                       </div>
-                      <div class="mb-5">
-                      
-                      </div>
-                      <div class="mb-5">
+                      <!-- <div class="mb-5">
                         <label for="discussion-title"><span class="text-md font-extrabold text-black ">Categories</span></label>
                         <ul class="grid gap-6 w-full md:grid-cols-3 mt-1 ">
                           <li>
-                            <input type="checkbox" id="php-option" value="php" class="hidden peer" required="">
+                            <input type="checkbox" name="Category[]" id="php-option" value="php" class="form-control hidden peer" required="">
                               <label for="php-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
                                 <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" />
                                 <div class="w-full text-md font-semibold">PHP</div>
                               </label>
                           </li>
                           <li>
-                            <input type="checkbox" id="c-option" value="c" class="hidden peer" required="">
+                            <input type="checkbox" id="c-option" name="Category[]" value="c" class="form-control hidden peer" required="">
                               <label for="c-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500 hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
                                 <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" />
                                 <div class="w-full text-md font-semibold">C</div>
                               </label>
                           </li>
                           <li>
-                            <input type="checkbox" id="javascript-option" value="javascript" class="hidden peer" required="">
+                            <input type="checkbox" id="javascript-option" name="Category[]" value="javascript" class="form-control hidden peer" required="">
                               <label for="javascript-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
                                 <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
                                 <div class="w-full text-md font-semibold">Javascript</div>
                               </label>
                           </li>
                           <li>
-                            <input type="checkbox" id="java-option" value="java" class="hidden peer" required="">
+                            <input type="checkbox" id="java-option" name="Category[]" value="java" class="form-control hidden peer" required="">
                               <label for="java-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
                                 <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
                                 <div class="w-full text-md font-semibold">Java</div>
                               </label>
                           </li>
                           <li>
-                            <input type="checkbox" id="python-option" value="python" class="hidden peer" required="">
+                            <input type="checkbox" id="python-option" name="Category[]" value="python" class="form-control hidden peer" required="">
                               <label for="python-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500  hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
                                 <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
                                 <div class="w-full text-md font-semibold">Python</div>
                               </label>
                           </li>
                           <li>
-                            <input type="checkbox" id="swift-option" value="swift" class="hidden peer" required="">
+                            <input type="checkbox" id="swift-option" name="Category[]" value="swift" class="form-control hidden peer" required="">
                               <label for="swift-option" class="inline-flex justify-between items-center px-3 py-1 w-full text-gray-500 bg-white rounded-lg border-2 border-gray-200 cursor-pointer peer-checked:border-blue-500 hover:text-gray-600 peer-checked:text-gray-600 ease-in-out duration-100">                           
                                 <img class="w-7 h-7 mr-2" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" />
                                 <div class="w-full text-md font-semibold">Swift</div>
                               </label>
                           </li>
                         </ul>
+                      </div> -->
+                      <div class="mb-5">
+                      <label for="Category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select an option</label>
+                        <select id="Category" name="Category" class="form-control w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100">
+                          <option selected>Choose a category</option>
+                          <option value="PHP">PHP</option>
+                          <option value="C">C</option>
+                          <option value="Javascript">Javascript</option>
+                          <option value="Java">Java</option>
+                          <option value="Python">Python</option>
+                          <option value="Swift">Swift</option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -362,11 +464,11 @@
                 <button type="submit" class="inline-flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-sky-500 to-blue-500 px-4 py-2 text-base font-extrabold text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Create</button>
                 <button id="add-discussion-cancel" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
               </div>
-            </form>
             </div>
+          </form>
+          </div>
         </div>
       </div>
-    </div>
 </div>
     <script>
       $(document).ready(function(){
