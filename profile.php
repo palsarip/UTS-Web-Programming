@@ -127,21 +127,21 @@
           </div>
         </aside>
       </div>
-      <div id="profile" class="w-full rounded-md shadow-lg mb-[6em]">
+      <div id="profile" class="w-full rounded-md shadow-lg">
           <div class="w-full h-[8em] md:h-[9em] xl:h-[9.5em] bg-gradient-to-r from-sky-500 to-blue-500 rounded-t-md p-[1em] pt-[2em] ">
             <div class="flex justify-end mr-0 md:mr-2 xl:mr-4">
               <?php
                 echo '<span class="text-xl text-white font-extrabold">'.$row['Role'].'</span>';
               ?>
             </div>
-                <div id="profile-header" class="flex absolute">
+                <div id="profile-header" class="flex">
                     <div class=" ml-[0em] md:ml-[1em] xl:ml-[2em] mt-[3em] bg-gray-500 rounded-full border-4 xl:border-8 border-white shadow-md">
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="profile" class="rounded-full w-[5.5em] h-[5.5em] md:w-[7.5em] md:h-[7.5em] xl:w-[10em] xl:h-[10em]">
                     </div>
-                    <div class="my-auto">
-                      <div class="mt-[4em] mb-0 md:mb-1 ml-[0.5em] md:ml-[1em] xl:mt-[3em] flex">
+                    <div class="my-auto w-[0em]">
+                      <div class="mt-[3em] mb-0 md:mb-1 ml-[0.5em] md:ml-[1em] xl:mt-[3em]">
                         <?php
-                          echo '<h1 class="text-lg font-extrabold text-black xl:text-xl">'.$row['First_Name'].'</h1>'.'&nbsp'.'<h1 class="text-lg xl:text-xl font-extrabold text-black">'.$row['Last_Name'].'</h1>';
+                          echo '<h1 class="text-md md:text-lg font-extrabold text-black xl:text-xl">'.$row['First_Name'].'&nbsp'.$row['Last_Name'].'</h1>';
                         ?>
                       </div>
                       <div class="ml-[0.5em] md:ml-[1em] ">
@@ -152,11 +152,20 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full h-[auto] bg-white rounded p-[1.5em] ">
-              <div class="flex mt-[5em]">
-                  <form action="">
+            <div class="w-full h-[auto] bg-white rounded pl-[1.5em] pr-[1.5em] pb-[1.5em] pt-[0.65em] md:pl-[2em] md:pr-[2em] md:pb-[2em] md:pt-[0.5em]">
+              <form action="./databases/process/update_process.php" method="POST">
+              <div class="flex justify-end">
+                <div class="flex">
+                  <!-- <button id="edit-button" class="hidden md:flex hover:underline hover:decoration-solid text-gray-500">Edit</button> -->
+                  <button id="edit-button" type="submit" class="hidden md:flex hover:bg-blue-600 text-white font-extrabold bg-blue-500 rounded-full px-5 py-2 ease-out duration-100">Save</button>
+                  <!-- <button id="edit-button" class="flex md:hidden hover:underline hover:decoration-solid text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                  </svg>
+                  </button> -->
+                </div>
+              </div>
+              <div class="mt-[5em] xl:mt-[8em]">
                     <div class="flex">
-
                       <div class="w-1/2 pr-1.5 mb-5">
                                     <label for="" class="text-xs font-semibold px-1">First name</label>
                                     <div class="flex">
@@ -177,7 +186,7 @@
                                     <label for="" class="text-xs font-semibold px-1">Username</label>
                                     <div class="flex">
                                         <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                        <input type="text" name="Username"  class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 outline-none focus:border-blue-500 ease-out duration-100" value="<?= $row['Username'] ?>" placeholder="" required>
+                                        <input type="text" name="Username"  class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 bg-gray-100 cursor-default focus:outline-none" value="<?= $row['Username'] ?>" placeholder="" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +199,14 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                      </div>
+                      <div>
+                        <div class="flex justify-end">
+                          <div class="flex">
+                            <button id="edit-button" type="submit" class="flex md:hidden hover:bg-blue-600 text-white font-extrabold bg-blue-500 rounded-full px-5 py-2 ease-out duration-100">Save</button>
+                          </div>
+                        </div>
+                      </div>
                   </form>
                 </div>
               </div>
