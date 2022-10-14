@@ -134,7 +134,7 @@
                         $commentRes = $db->prepare($sqlComments);
                         $commentRes->execute();
                         echo ' <div class="w-full mb-[3em]">
-                        <div class=" bg-white shadow-lg rounded-md p-5" data-aos="fade-up" data-aos-duration="500">
+                        <div class=" bg-white shadow-lg rounded-md p-5">
                           <div class="flex">
                             <div id="vote" class="hidden mr-[1em] lg:block">
                               <div class="inline w-[2em] text-center">
