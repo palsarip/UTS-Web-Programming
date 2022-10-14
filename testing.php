@@ -76,7 +76,8 @@
                 echo '<p class="block px-4 py-2 text-md text-blue-500 font-extrabold" role="menuitem" tabindex="-1" id="user-menu-item-1">'.$_SESSION['Username'].'<p>';
                 echo '<hr class="mx-[0.5rem]">';
                 echo '<div class="my-2">';
-                echo '<a href="./profile.php?id='.$_SESSION['ID_User'].'" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Your Profile</a>';
+                echo '<a href="./profile.php?user='.$_SESSION['Username'].'" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Your Profile</a>';
+                echo '<a href="#" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>';
                 echo '  <a href="./databases/process/logout_process.php" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>';
                 echo '</div>
                 </div>
@@ -98,7 +99,7 @@
           <div class="overflow-y-auto py-4">
               <ul class="space-y-2">
                 <li>
-                    <a id="home" href="./index.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white bg-blue-500 drop-shadow-md text-white">
+                    <a id="home" href="../UTS/index.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white bg-blue-500 drop-shadow-md text-white">
                       <svg id="home"  aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                         <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
@@ -107,31 +108,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./explore.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white active:bg-blue-500 active:drop-shadow-md">
-                    <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <a href="#" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white active:bg-blue-500 active:drop-shadow-md">
+                      <svg  aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
                         <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z" clip-rule="evenodd" />
-                      </svg>
                       </svg>
                       <span class="ml-3 font-semibold">Explore</span>
                     </a>
                 </li>
-                <?php
-                  if((!isset($_SESSION['User_ID']) && !isset($_SESSION['Username'])) || $_SESSION['Role'] !== 'Admin'){
-                    echo '';
-                  }else{
-                    echo '
-                    <li>
-                    <a href="./admin.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white active:bg-blue-500 active:drop-shadow-md">
-                      <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                        <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
-                      </svg>
-                      <span class="ml-3 font-semibold">Admin</span>
-                    </a>
-                </li>
-                    ';
-                  }
-                ?>
               </ul>
           </div>
         </aside>
@@ -140,22 +124,9 @@
       <div class="block">
         <?php
           require_once('./controller/time_converter.php');
-
-          $sqlPosts = "SELECT *, COUNT(Comments.ID_Post) AS 'Comment_Count' From Post LEFT JOIN Comments ON Post.ID_Post = Comments.ID_Post GROUP BY Post.ID_Post ORDER BY Post.ID_Post DESC";
-
-          // "SELECT *, COUNT(Comments.ID_Post) AS Comment_Count, FROM Post LEFT JOIN Comments ON Post.ID_Post = Comments.ID_Post GROUP BY Post.ID_Post ORDER BY Post.ID_Post DESC";
-
-          // "SELECT * FROM post LEFT JOIN comments ON post.ID_Post = comments.ID_Post ORDER BY post.ID_Post DESC";
-
-          // "SELECT * FROM comments LEFT JOIN post ON comments.ID_Post = post.ID_Post ORDER BY comments.ID_Comment DESC";
-
-          $result = $db->prepare($sqlPosts);
+          $sql = "SELECT * FROM post ORDER BY Created_At DESC";
+          $result = $db->prepare($sql);
           $result->execute();
-
-          // $sqlComment =  "SELECT * FROM comments WHERE ID_POST";
-          // $resultComment = $db->prepare($sqlComment);
-          // $resultComment->execute();
-          // $dataComment = $resultComment->fetch(PDO::FETCH_ASSOC);
 
           while($data = $result->fetch(PDO::FETCH_ASSOC)){
             echo ' <div class="w-full mb-[3em]">
@@ -173,19 +144,18 @@
                   </div>
                 </div>
                 <div>
-                <div class="flex">
+                <div class="flex lg:hidden">
                         <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
                           <span class="sr-only">Open user menu</span>
-                          <a href="profile.php?id='.$data['Creator_ID'].'">
-                            <img class="h-10 w-10 rounded-full" src="'.$data['Creator_Picture'].'" alt="">
-                          </a>
+                          <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                         </button>
                         <div class="flex my-auto ml-3">
-                            <p class="my-auto text-gray-500 text-sm">
-                              <span class="font-extrabold text-blue-500">'.$data['Creator_Username'].'</span>
-                              '.time_elapsed_string($data['Created_At']).'
-                            </p>
-                        </div>
+                          <div class="flex">
+                            <p class="font-extrabold text-blue-500">'.$data['Created_By'].'</p>
+                            <p class="my-auto text-gray-500 mx-2">•</p>
+                            <p class="my-auto text-gray-500 text-sm">'.time_elapsed_string($data['Created_At']).'</p>
+                          </div>
+                      </div>
                 </div>
                 <div id="discussion" class="w-[80vw] md:w-[90vw] lg:w-[50vw] xl:w-[35vw]">
                     <div>
@@ -199,7 +169,7 @@
                       </div>
                     </div>
                     <div>
-                      <hr class="mb-[1em]">
+                      <hr>
                       <div class="flex justify-between">
                         <div id="vote" class="flex my-3 lg:hidden">
                           <div class="flex">
@@ -214,49 +184,41 @@
                             </svg>
                           </div>
                         </div>
+                        <div id="on-dekstop-footer" class="hidden flex lg:flex">
+                          <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
+                            <span class="sr-only">Open user menu</span>
+                            <img class="h-7 w-7 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                          </button>
+                          <div class="flex my-auto ml-3">
+                            <div class="flex">
+                              <p class="my-auto text-gray-500 text-sm">Posted by &nbsp</p>
+                              <p class="my-auto font-extrabold text-blue-500 text-sm">'.$data['Created_By'].'</p>
+                              <p class="my-auto text-gray-500 ml-5 text-sm">'.time_elapsed_string($data['Created_At']).'</p>
+                            </div>
+                      </div>
                         </div>
                         <div id="discusison-footer-action" class="my-auto">
-                        <button type="button" class="comment-button flex text-gray-500 hover:text-blue-500 hover:fill-blue-500 cursor-pointer">
-                        <div class="hidden md:inline-flex">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-                          </svg>
-                          <p class="my-auto mx-2 text-sm">'.$data['Comment_Count'].'</p>
-                        </div>
-                        <div class="inline-flex md:hidden">
-                          <p class="my-auto text-sm">'.'Show comments'.'</p>
-                        </div>
-                        </button>
-                        <div id="'.$data['ID_Post'].'" class="comment-section w-full mt-[1.5em]">
-                          <form action="">
-                            <div class="block md:flex justify-between">
-                              <div class="flex justify-start md:block w-[5em]">
-                                <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
-                                  <span class="sr-only">Open user menu</span>
-                                  <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                </button>
-                              </div>
-                                <div class="flex w-full mx-auto my-3 md:my-0 md:ml-[0.5em] md:mr-[1.5em]">
-                                  <textarea id="message" name="Comment" rows="4" class="form-control block max-h-[3em] p-2.5 w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your comment..." required></textarea>
-                                </div>
-                              <div class="flex justify-end">
-                              <button href="#" class="flex items-center justify-center py-2 px-3 w-[8em] max-h-[2.25em] my-0 text-base font-normal rounded-full bg-blue-500 text-white hover:bg-blue-600 ease-out duration-100">
-                                  <span class="text-sm font-bold mt-0.5 ml-1">Add Comment</span>
-                              </buttton>
-                              </div>
-                            </div>
-                          </form>
-                          <div class="mt-[1.5em] max-h-[15em] overflow-y-auto">';
-                            echo $data['Comment'];
-                        echo '</div>
-                        </div>
+                          <div id="'.$data['ID_Post'].'" class="comment flex text-gray-500 hover:text-blue-500 hover:fill-blue-500 cursor-pointer">
+                          </div>
+                          </div>
+                          </div>
+                          <div class="w-full mt-[1.5em]">
+                          <button type="button" class="comment-button flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                            </svg>
+                            <p class="my-auto mx-2 text-sm">'.$data['Comments'].'</p>
+                          </button>
+                          <div class="comment-section">
+                          tes
+                          </div
                       </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        </div>' ;
+        </div>';
           }
         ?>
       </div>
@@ -367,27 +329,16 @@
                       <div class="mb-5">
                         <p class="text-md font-extrabold">Top Categories</p>
                       </div>
-                      <?php
-                        $sqlCategories = "SELECT Category, COUNT(Category) AS Total FROM post GROUP BY 1 ORDER BY 2 DESC LIMIT 5";
-                        $resultCategories = $db->prepare($sqlCategories);
-                        $resultCategories->execute();
-
-                        while($dataCategories = $resultCategories->fetch(PDO::FETCH_ASSOC)){
-                          echo '
-                          <div class="my-auto flex mb-[1em]">
-                          <div>
-                            <a href="./categories.php?category='.$dataCategories['Category'].'" class="my-auto font-bold text-blue-500">
-                              '.$dataCategories['Category'].'
-                            </a>
-                          </div>
-                            <div class="ml-auto">
-                              <p class="my-auto text-gray-500 text-sm leading-[2]">'.$dataCategories['Total'].'</p>
-                          </div>
+                      <div class="flex">
+                        <div>
+                          <a href="" class="font-bold text-blue-500">
+                              PHP
+                          </a>
                         </div>
-                          ';
-                        }
-                      ?>
-                     
+                        <div class="ml-auto">
+                          <p class="text-gray-500">6</p>
+                      </div>
+                    </div>
           </div>
         </aside>
       </div>
@@ -526,6 +477,12 @@
           </form>
           </div>
         </div>
+      </div>
+      <div class="flex my-auto ml-3">
+          <p class="my-auto text-gray-500 text-sm">
+            <span class="font-extrabold text-blue-500">tes</span>
+            tes
+          </p>
       </div>
 </div>
     <script>

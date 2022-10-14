@@ -15,17 +15,20 @@
     src="https://code.jquery.com/jquery-3.6.1.js"
     integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
-    <title>KOMODO - Your Profile</title>
+    <title>KOMODO - Admin Dashboard</title>
 </head>
 <?php
   session_start();
   require_once("./databases/db.php");
 
-  $id = $_GET['id'];
-  $sql = "SELECT * FROM user WHERE ID_User = $id";
+  $sql = "SELECT * FROM user";
   $result = $db->prepare($sql);
-  $result->execute([]);
-  $row = $result->fetch(PDO::FETCH_ASSOC);
+  $result->execute();
+
+  $sql2 = "SELECT * FROM post";
+  $result2 = $db->prepare($sql2);
+  $result2->execute();
+
 
 ?>
 <body id="body" class="bg-blue-50 h-auto">
@@ -77,7 +80,7 @@
                 <div>
                   <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
                     <span class="sr-only">Open user menu</span>
-                    <img class="h-10 w-10 rounded-full" src="'.$_SESSION['Picture'].'" alt="">
+                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                   </button>
                 </div>';
                 echo '<div id="user-menu-dropdown" class="absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden ease-out duration-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" >';
@@ -85,6 +88,7 @@
                 echo '<hr class="mx-[0.5rem]">';
                 echo '<div class="my-2">';
                 echo '<a href="./profile.php?id='.$_SESSION['ID_User'].'" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Your Profile</a>';
+                echo '<a href="#" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>';
                 echo '  <a href="./databases/process/logout_process.php" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>';
                 echo '</div>
                 </div>
@@ -115,8 +119,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./explore.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white active:bg-blue-500 active:drop-shadow-md">
-                    <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <a href="./explore.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white bg-blue-500 drop-shadow-md text-white">
+                    <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
                         <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z" clip-rule="evenodd" />
                       </svg>
@@ -130,7 +134,7 @@
                   }else{
                     echo '
                     <li>
-                    <a href="./admin.php"  class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white active:bg-blue-500 active:drop-shadow-md">
+                    <a href="./admin.php" class="flex items-center p-2 w-full text-base font-normal text-gray-500 rounded-md transition duration-75 group hover:bg-blue-500 hover:text-white active:bg-blue-500 active:drop-shadow-md">
                       <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
                       </svg>
@@ -144,187 +148,42 @@
           </div>
         </aside>
       </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      <div id="profile" class="w-full rounded-md shadow-lg">
-=======
-      <?php
-        if($_SESSION['ID_User'] !== $id && $_SESSION['Role'] !== 'Admin'){
-          echo '
-          <div id="profile" class="w-full rounded-md shadow-lg">
->>>>>>> Stashed changes
-          <div class="w-full h-[8em] md:h-[9em] xl:h-[9.5em] bg-gradient-to-r from-sky-500 to-blue-500 rounded-t-md p-[1em] pt-[2em] ">
-            <div class="flex justify-end mr-0 md:mr-2 xl:mr-4">
-                <span class="text-xl text-white font-extrabold">'.$row['Role'].'</span>
+          <div class="w-full rounded-md mb-[3em]">
+            <div class="w-full">
+                  <div class="mb-[0.5em] text-[36px] font-bold text-gray-500 hidden lg:flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-gray-500 mr-2 my-auto">
+                        <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
+                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z" clip-rule="evenodd" />
+                        </svg>
+                        <h1 class="my-auto text-[32px] font-bold text-gray-500">Please select categories that are relevant to you</h1>
+                  </div>
+                  <div class="w-full shadow-lg h-[auto] bg-white p-5 rounded-md ">
+                    <?php
+                        $sqlCategories = "SELECT Category, COUNT(Category) AS Total FROM post GROUP BY 1 ORDER BY 2 DESC";
+                        $resultCategories = $db->prepare($sqlCategories);
+                        $resultCategories->execute();
+
+                        while($rowCategories = $resultCategories->fetch(PDO::FETCH_ASSOC)){
+                            $Category = $rowCategories['Category'];
+                            $Total = $rowCategories['Total'];
+                            echo '
+                            <div class="flex items-center justify-between mb-[0.5em]">
+                                <div class="py-2 px-5 bg-gradient-to-r from-sky-500 to-blue-500 flex items-center rounded-lg my-2 cursor-pointer">
+                                <a href="./categories.php?category='.$Category.'" class="text-white
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white mr-3">
+                                    <path fill-rule="evenodd" d="M5.25 2.25a3 3 0 00-3 3v4.318a3 3 0 00.879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 005.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 00-2.122-.879H5.25zM6.375 7.5a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" clip-rule="evenodd" />
+                                </svg>
+                                <h1 class="text-[28px] font-bold text-white">'.$Category.'</h1>
+                                </a>
+                                </div>
+                                <h1 class="text-[28px] text-black font-semibold">'.''.$Total.'</h1>
+                            </div>
+                            ';
+                        }
+                    ?>
+                  </div>
             </div>
-                <div id="profile-header" class="flex">
-                    <div class=" ml-[0em] md:ml-[1em] xl:ml-[2em] mt-[3em] bg-gray-500 rounded-full border-4 xl:border-8 border-white shadow-md">
-                        <img src="'.$row['Picture'].'" alt="profile" class="rounded-full w-[5.5em] h-[5.5em] md:w-[7.5em] md:h-[7.5em] xl:w-[10em] xl:h-[10em]">
-                    </div>
-                    <div class="my-auto w-[0em]">
-                      <div class="w-[10em md:w-[20em]  mt-[3em] mb-0 md:mb-1 ml-[0.5em] md:ml-[1em] xl:mt-[3em]">
-                          <h1 class="text-md md:text-lg font-extrabold text-black xl:text-xl">'.$row['First_Name'].'&nbsp'.$row['Last_Name'].'</h1>
-                      </div>
-                      <div class="ml-[0.5em] md:ml-[1em] ">
-                          <h1 class="text-sm xl:text-base font-normal text-gray-500">'.$row['Username'].'</h1>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full h-[auto] bg-white rounded pl-[1.5em] pr-[1.5em] pb-[1.5em] pt-[0.65em] md:pl-[2em] md:pr-[2em] md:pb-[2em] md:pt-[0.5em]">
-              <form action="./databases/process/update_process.php" method="POST">
-              <div class="flex justify-end">
-                <div class="flex mb-[2em]">
-               
-                </div>
-              </div>
-              <div class="mt-[5em] xl:mt-[8em]">
-                    <div class="flex">
-                      <div class="w-1/2 pr-1.5 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">First name</label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                        <input type="text" name="First_Name" class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 bg-gray-100 cursor-default focus:outline-none" value="'.$row['First_Name'].'" placeholder="" readonly>
-                                    </div>
-                                </div>
-                                <div class="w-1/2 pl-1.5 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">Last name</label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                        <input type="text" name="Last_Name"  class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 bg-gray-100 cursor-default focus:outline-none" value="'.$row['Last_Name'].'" placeholder="" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex -mx-3">
-                                <div class="w-full px-3 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">Username</label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                        <input type="text" name="Username"  class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 bg-gray-100 cursor-default focus:outline-none" value="'.$row['Username'].'" placeholder="" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex -mx-3">
-                                <div class="w-full px-3 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">Email</label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                        <input type="email" name="Email" class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 bg-gray-100 cursor-default focus:outline-none" value="'.$row['Email'].'" placeholder="" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                      </div>
-                      <div>
-                        <div class="flex justify-end">
-                          <div class="flex">
-                            <button id="edit-button" type="submit" class="flex md:hidden hover:bg-blue-600 text-white font-extrabold bg-blue-500 rounded-full px-5 py-2 ease-out duration-100">Save</button>
-                          </div>
-                        </div>
-                      </div>
-                  </form>
-                </div>
-              </div>
-          ';
-        }else{
-          echo '
-          <div id="profile" class="w-full rounded-md shadow-lg">
-          <form action="./databases/process/update_process.php" method="POST">
-          <div class="w-full h-[8em] md:h-[9em] xl:h-[9.5em] bg-gradient-to-r from-sky-500 to-blue-500 rounded-t-md p-[1em] pt-[2em] ">
-            <div class="flex justify-end mr-0 md:mr-2 xl:mr-4">
-                <span class="text-xl text-white font-extrabold">'.$row['Role'].'</span>
-            </div>
-                <div id="profile-header" class="flex">
-                    <div class=" ml-[0em] md:ml-[1em] xl:ml-[2em] mt-[3em] bg-gray-500 rounded-full border-4 xl:border-8 border-white shadow-md">
-                      <label for="profile-image" class="cursor-pointer">
-                          <img class="w-[5.5em] h-[5.5em] md:w-[7.5em] md:h-[7.5em] xl:w-[10em] xl:h-[10em]" src="./uploads/profile'.$row['Picture'].'" alt="">
-                          <input id="profile-image" type="file" class="form-control hidden" name="Picture" />
-                      </label>
-                    </div>
-                    <div class="my-auto w-[0em]">
-                      <div class="w-[10em md:w-[20em] mt-[3em] mb-0 md:mb-1 ml-[0.5em] md:ml-[1em] xl:mt-[3em]">
-                          <h1 class="text-md md:text-lg font-extrabold text-black xl:text-xl">'.$row['First_Name'].'&nbsp'.$row['Last_Name'].'</h1>
-                      </div>
-                      <div class="ml-[0.5em] md:ml-[1em] ">
-                          <h1 class="text-sm xl:text-base font-normal text-gray-500">'.$row['Username'].'</h1>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full h-[auto] bg-white rounded pl-[1.5em] pr-[1.5em] pb-[1.5em] pt-[0.65em] md:pl-[2em] md:pr-[2em] md:pb-[2em] md:pt-[0.5em]">
-              <div class="flex justify-end">
-                <div class="flex">
-                  <!-- <button id="edit-button" class="hidden md:flex hover:underline hover:decoration-solid text-gray-500">Edit</button> -->
-                  <button id="edit-button" type="submit" class="hidden md:flex hover:bg-blue-600 text-white font-extrabold bg-blue-500 rounded-full px-5 py-2 ease-out duration-100">Save</button>
-                  <!-- <button id="edit-button" class="flex md:hidden hover:underline hover:decoration-solid text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                  </svg>
-                  </button> -->
-                </div>
-              </div>
-              <div class="mt-[5em] xl:mt-[8em]">
-                    <div class="flex">
-                      <div class="w-1/2 pr-1.5 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">First name</label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                        <input type="text" name="First_Name" class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500 ease-out duration-100" value="'.$row['First_Name'].'" placeholder="" required>
-                                    </div>
-                                </div>
-                                <div class="w-1/2 pl-1.5 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">Last name</label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                        <input type="text" name="Last_Name"  class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-blue-500 ease-out duration-100" value="'.$row['Last_Name'].'" placeholder="" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex -mx-3">
-                                <div class="w-full px-3 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">Username</label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                        <input type="text" name="Username"  class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 bg-gray-100 cursor-default focus:outline-none" value="'.$row['Username'].'" placeholder="" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex -mx-3">
-                                <div class="w-full px-3 mb-5">
-                                    <label for="" class="text-xs font-semibold px-1">Email</label>
-                                    <div class="flex">
-                                        <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                        <input type="email" name="Email" class="form-control w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-250 outline-none focus:border-blue-500 ease-out duration-100" value="'.$row['Email'].'" placeholder="" required>
-                                    </div>
-                                </div>
-                            </div>
-                      </div>
-                      <div>
-                        <div class="flex justify-end">
-                          <div class="flex">
-                            <button id="edit-button" type="submit" class="flex md:hidden hover:bg-blue-600 text-white font-extrabold bg-blue-500 rounded-full px-5 py-2 ease-out duration-100">Save</button>
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                  </form>
-<<<<<<< Updated upstream
-                </div>
-=======
-      <div id="profile" class="w-full">
-          <div class="w-full bg-white shadow-lg rounded-xl p-[2em]">
-            <div class="flex">
-                <div id="post-header">
-                
-                </div>
-              <div id="discussion" class="">
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-              </div>
-          ';
-        }
-      ?>
-      
-            </div>
+          </div>
           </div>
         </div>
       </div>

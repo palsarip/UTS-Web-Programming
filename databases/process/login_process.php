@@ -16,16 +16,19 @@
         echo "User not found";
     } else {
         // Check if password is correct
-        echo "USERNAME ada di database<br/>";
-        echo "Password yang diinput di form login: " . $password;
-        echo "<br/> Password yang tersimpan di database: " . $row['Password'];
         if(!password_verify($password, $row['Password'])){
             echo "Wrong password";
+        } elseif($row['Status'] == "Banned" || $row['Status'] == "Temporary"){
+            echo "User is banned";
         } else {
-            // Login Success, set SESSION DATA
+            echo "Login success";
             $_SESSION['ID_User'] = $row['ID_User'];
             $_SESSION['Username'] = $row['Username'];
+            $_SESSION['Role'] = $row['Role'];
+            $_SESSION['Picture'] = $row['Picture'];
+
             header("Location: ../../index.php");
         }
+
     }
 ?>
