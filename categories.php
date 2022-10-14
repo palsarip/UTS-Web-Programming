@@ -124,11 +124,9 @@
                     <?php
                         require_once('./controller/time_converter.php');
                         
-                        $sql = "SELECT *, COUNT(Comments.ID_Post) AS 'Comment_Count' FROM Post LEFT JOIN Comments ON Post.ID_Post = Comments.ID_Post 
-                        WHERE Post.Category = ? GROUP BY Post.ID_Post ORDER BY Post.ID_Post DESC";
-                            
+                        $sql = "SELECT * FROM post WHERE Category = '$get_category'";
                         $result = $db->prepare($sql);
-                        $result->execute([$get_category]);
+                        $result->execute();
 
                         while($data = $result->fetch(PDO::FETCH_ASSOC)){
                             echo ' <div class="w-full mb-[3em]">

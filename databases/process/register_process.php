@@ -14,7 +14,7 @@
     $en_pass = password_hash($password, PASSWORD_BCRYPT);
 
     // SQL Query
-    $sql = "INSERT INTO user (First_Name, Last_Name, Username, Email, User_Key,Password, Role) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO user (First_Name, Last_Name, Username, Email, User_Key,Password, Role) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     // Execute Query
     $result = $db->prepare($sql);

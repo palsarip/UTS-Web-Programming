@@ -166,7 +166,7 @@
                         <p >'.$data['Title'].'</p>
                       </div>
                     </div>
-                    <div class="my-3">
+                    <div class="max-w-[10em] my-3">
                       <div class="text-md font-normal">
                         <p>'.$data['Description'].'</p>
                       </div>
