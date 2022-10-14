@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 14, 2022 at 08:21 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: localhost:3306
+-- Generation Time: Oct 15, 2022 at 04:24 AM
+-- Server version: 10.3.36-MariaDB-cll-lve
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `uts`
+-- Database: `komodofo_database`
 --
 
 -- --------------------------------------------------------
@@ -38,10 +39,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`ID_Category`, `ID_Post`, `Category`) VALUES
-(000012, 000020, 'PHP'),
-(000015, 000023, 'PHP'),
-(000016, 000024, 'Choose a category'),
-(000017, 000025, 'Choose a category');
+(000047, 000055, 'PHP');
 
 -- --------------------------------------------------------
 
@@ -62,10 +60,11 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`ID_Comments`, `Comment`, `Date`, `ID_Post`, `Username`) VALUES
-(000003, 'ini edu', '2022-10-14 12:47:54', 000021, 'akbarmasadistya'),
-(000004, 'emang kyk monyet diaman', '2022-10-14 04:17:06', 000021, 'naufalsyarif'),
-(000005, 'tes', '2022-10-14 05:02:26', 000021, 'naufalsyarif'),
-(000006, '123123123', '2022-10-14 19:09:02', 000021, 'akbarmasadistya');
+(000010, 'hii\r\n', '2022-10-14 21:05:05', 000055, 'jojo'),
+(000011, 'no', '2022-10-14 21:07:35', 000055, 'johnthor'),
+(000012, 'aaa', '2022-10-14 21:07:59', 000055, 'johnthor'),
+(000013, 'as', '2022-10-14 21:08:02', 000055, 'johnthor'),
+(000014, 'aaaa', '2022-10-14 21:13:40', 000055, 'johnthor');
 
 -- --------------------------------------------------------
 
@@ -77,13 +76,6 @@ CREATE TABLE `likes` (
   `ID_Post` int(6) UNSIGNED ZEROFILL NOT NULL,
   `ID_User` int(6) UNSIGNED ZEROFILL NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `likes`
---
-
-INSERT INTO `likes` (`ID_Post`, `ID_User`) VALUES
-(000021, 000002);
 
 -- --------------------------------------------------------
 
@@ -110,11 +102,7 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`ID_Post`, `Title`, `Description`, `Picture`, `Filename`, `Category`, `Created_At`, `Creator_Picture`, `Creator_ID`, `Creator_Username`, `Likes`) VALUES
-(000020, 'What does the fox say?', 'jadi gini mas', NULL, NULL, 'PHP', '2022-10-13 19:09:04', NULL, 000002, 'naufalsyarif', 0),
-(000021, 'akbar kyk monyet', '123', NULL, NULL, 'Python', '2022-10-14 01:27:04', NULL, 000002, 'naufalsyarif', 0),
-(000023, 'tes', 'tes123', NULL, NULL, 'PHP', '2022-10-14 16:23:04', NULL, 000002, 'naufalsyarif', 0),
-(000024, 'tes', '123', NULL, NULL, 'Choose a category', '2022-10-14 16:27:33', 0x494d472d32303232313030382d5741303333322e6a7067, 000002, 'naufalsyarif', 0),
-(000025, 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC', 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC', NULL, NULL, 'Choose a category', '2022-10-14 23:48:59', 0x494d472d32303232313030382d5741303333322e6a7067, 000002, 'naufalsyarif', 0);
+(000055, 'Does C better than Python?', 'What do you guys think?', NULL, NULL, 'PHP', '2022-10-15 04:01:48', 0x6b697373706e672d736c6565702d616c61726d2d636c6f636b732d6675746f6e2d6265642d6865616c74682d342d616d7071756f742d35626532333034616462383439372e323136353434363031353431353530313534383939322e706e67, 000002, 'naufalsyarif', 0);
 
 -- --------------------------------------------------------
 
@@ -141,8 +129,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID_User`, `First_Name`, `Last_Name`, `Username`, `Password`, `Email`, `User_Key`, `Picture`, `Filename`, `Role`, `Status`) VALUES
-(000002, 'M. Naufal', 'Syarif', 'naufalsyarif', '$2y$10$Rv4wQH8jhW32pHUMyIVWh.EFyykVy8Gb0xkLQP5zYTdYNI8kWiFC.', 'naufal.syarif0809@gmail.com', 'oppy', 0x6b697373706e672d736c6565702d616c61726d2d636c6f636b732d6675746f6e2d6265642d6865616c74682d342d616d7071756f742d35626532333034616462383439372e323136353434363031353431353530313534383939322e706e67, 'kisspng-sleep-alarm-clocks-futon-bed-health-4-ampq', 'Admin', 'Safe'),
-(000005, 'Akbar', 'Masadistya', 'akbarmasadistya', '$2y$10$tgWsXYb/39grhT1HL49aHu3v1HN3NYfDhONd/G2YDUBm9EixhLPza', 'akbar.masadistya@gmail.com', 'valorant', 0x6b697373706e672d736c6565702d616c61726d2d636c6f636b732d6675746f6e2d6265642d6865616c74682d342d616d7071756f742d35626532333034616462383439372e323136353434363031353431353530313534383939322e706e67, 'kisspng-sleep-alarm-clocks-futon-bed-health-4-ampq', 'User', 'Safe');
+(000002, 'M. Naufal', 'Syarif', 'naufalsyarif', '$2y$10$V.BdVNDvryFzS1LMf3wB1eTzb70w8O3MA20zkhzmo7oDxGwCXzqv6', 'naufal.syarif0809@gmail.com', 'oppy', 0x6b697373706e672d736c6565702d616c61726d2d636c6f636b732d6675746f6e2d6265642d6865616c74682d342d616d7071756f742d35626532333034616462383439372e323136353434363031353431353530313534383939322e706e67, 'kisspng-sleep-alarm-clocks-futon-bed-health-4-ampq', 'Admin', 'Safe'),
+(000005, 'Akbar', 'Masadistya', 'akbarmasadistya', '$2y$10$tgWsXYb/39grhT1HL49aHu3v1HN3NYfDhONd/G2YDUBm9EixhLPza', 'akbar.masadistya@gmail.com', 'valorant', 0x6b697373706e672d736c6565702d616c61726d2d636c6f636b732d6675746f6e2d6265642d6865616c74682d342d616d7071756f742d35626532333034616462383439372e323136353434363031353431353530313534383939322e706e67, 'kisspng-sleep-alarm-clocks-futon-bed-health-4-ampq', 'User', 'Safe'),
+(000011, 'Aloysius', 'Jonathan', 'jojo', '$2y$10$Tp5mYoJ4pG6LFbAJMZ7xROHHJPGqglaAywgxpNZIu7gF/pazi8ghO', 'aloysiusjonathan452@gmail.com', 'ps10', 0x507265794e65656473322e706e67, 'PreyNeeds2.png', 'Admin', 'Safe'),
+(000016, 'John', 'Thor', 'johnthor', '$2y$10$XQs35un9/ACCeC6nbleRP.j1TrNWsLE2/oQv6Y.CNY80WPIIDKfC2', 'johnthor@gmail.com', 'ps5', 0x3538343563613763313034366162353433643235323338622e706e67, '5845ca7c1046ab543d25238b.png', 'User', 'Safe');
 
 --
 -- Indexes for dumped tables
@@ -195,25 +185,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `ID_Category` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID_Category` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `ID_Comments` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_Comments` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `ID_Post` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ID_Post` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID_User` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_User` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables

@@ -138,7 +138,7 @@
           </div>
         </aside>
       </div>
-      <div id="profile" class="w-full rounded-md shadow-lg">
+      <div id="profile" class="w-full rounded-md">
       <?php
         if($_SESSION['ID_User'] !== $id && $_SESSION['Role'] !== 'Admin'){
           echo '
@@ -216,7 +216,7 @@
           ';
         }else{
           echo '
-          <div id="profile" class="w-full rounded-md shadow-lg">
+          <div id="profile" class="w-full rounded-md shadow-lg mb-[3em]">
           <form action="./databases/process/update_process.php" method="POST" enctype="multipart/form-data">
           <div class="w-full h-[8em] md:h-[9em] xl:h-[9.5em] bg-gradient-to-r from-sky-500 to-blue-500 rounded-t-md p-[1em] pt-[2em] ">
             <div class="flex justify-end mr-0 md:mr-2 xl:mr-4">
@@ -299,7 +299,151 @@
           ';
         }
       ?>
+          <div class="w-full rounded-md mb-[3em]">
+            <div class="w-full">
+                  <div class="w-full h-[auto]">
+                    <?php
+                        require_once('./controller/time_converter.php');
+                        
+                        $sql2 = "SELECT * FROM post WHERE Creator_ID = '$id'";
+                        $result2 = $db->prepare($sql2);
+                        $result2->execute();
+
+                        while($data2 = $result2->fetch(PDO::FETCH_ASSOC)){
+                          $sqlComments = "SELECT * FROM Comments WHERE ID_Post = " . $data2['ID_Post'];
+              
+                          $commentRes = $db->prepare($sqlComments);
+                          $commentRes->execute();
+                          echo ' <div class="w-full mb-[3em]">
+                          <div class=" bg-white shadow-lg rounded-md p-5">
+                            <div class="flex">
+                              <div id="vote" class="hidden mr-[1em] lg:block">
+                                <div class="inline w-[2em] text-center">
+                                  <button type="button" onclick="likeController()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-1 hover:text-blue-500 cursor-pointer ease-in-out duration-200">
+                                    <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" /></svg>
+                                  </button>
+                                  <p class="font-bold">'.$data2['Likes'].'</p>
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mt-1 hover:text-red-500 cursor-pointer ease-in-out duration-200">
+                                  <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" /></svg>
+                                </div>
+                              </div>
+                              <div>
+                              <div class="flex">
+                                      <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
+                                        <span class="sr-only">Open user menu</span>
+                                        <a href="profile.php?id='.$data2['Creator_ID'].'">
+                                          <img class="h-10 w-10 rounded-full" src="./uploads/profile/'.$data2['Creator_Picture'].'" alt="">
+                                        </a>
+                                      </button>
+                                      <div class="flex my-auto ml-3">
+                                          <p class="my-auto text-gray-500 text-sm">
+                                            <span class="font-extrabold text-blue-500">'.$data2['Creator_Username'].'</span>
+                                            '.time_elapsed_string($data2['Created_At']).'
+                                          </p>
+                                      </div>
+                              </div>
+                              <div id="discussion" class="w-[80vw] md:w-[90vw] lg:w-[65vw] xl:w-[52.5vw]">
+                                  <div>
+                                    <div class="mt-2 text-lg font-extrabold">
+                                      <p >'.$data2['Title'].'</p>
+                                    </div>
+                                  </div>
+                                  <div class="my-3">
+                                    <div class="text-md font-normal">
+                                      <p>'.$data2['Description'].'</p>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <hr class="mb-[1em]">
+                                    <div class="flex justify-between">
+                                      <div id="vote" class="flex my-3 lg:hidden">
+                                        <div class="flex">
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hover:text-blue-500 ease-in-out duration-200">
+                                            <path fill-rule="evenodd" d="M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z" clip-rule="evenodd" />
+                                          </svg>
+                                          <p class="text-gray-500 mx-2">'.$data2['Likes'].'</p>
+                                        </div>
+                                        <div class="flex">
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2 hover:text-red-500 ease-in-out duration-200">
+                                            <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+                                          </svg>
+                                        </div>
+                                      </div>
+                                      </div>
+                                      <div id="discusison-footer-action" class="my-auto">
+                                      <button type="button" class="comment-button flex text-gray-500 hover:text-blue-500 hover:fill-blue-500 cursor-pointer">
+                                      <div class="hidden md:inline-flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                                        </svg>
+                                        <p class="my-auto mx-2 text-sm">'.''.'</p>
+                                      </div>
+                                      <div class="inline-flex md:hidden">
+                                        <p class="my-auto text-sm">'.'Show comments'.'</p>
+                                      </div>
+                                      </button>
+                                      <div id="'.$data2['ID_Post'].'" class="comment-section w-full mt-[1.5em]">
+                                        <form action="./databases/process/comment_process.php" method="POST">
+                                          <div class="block md:flex justify-between">
+                                            <div class="flex justify-start md:block w-[5em]">
+                                              <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
+                                                <span class="sr-only">Open user menu</span>
+                                                <img class="h-10 w-10 rounded-full" src="./uploads/profile/'.$_SESSION['Picture'].'" alt="">
+                                              </button>
+                                            </div>
+                                              <div class="flex w-full mx-auto my-3 md:my-0 md:ml-[0.5em] md:mr-[1.5em]">
+                                                <textarea id="message" name="Comment" rows="4" class="form-control block max-h-[3em] p-2.5 w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your comment..." required></textarea>
+                                                <input type="hidden" name="post_id" value="'.$data2['ID_Post'].'" />
+                                              </div>
+                                            <div class="flex justify-end">
+                                            <button type="submit" class="flex items-center justify-center py-2 px-3 w-[8em] max-h-[2.25em] my-0 text-base font-normal rounded-full bg-blue-500 text-white hover:bg-blue-600 ease-out duration-100">
+                                                <span class="text-sm font-bold mt-0.5 ml-1">Add Comment</span>
+                                            </buttton>
+                                            </div>
+                                          </div>
+                                        </form>
+                                        <div class="mt-[1.5em] max-h-[15em] overflow-y-auto">';
+                                        while($comment = $commentRes->fetch(PDO::FETCH_ASSOC)) {
+                                          echo '
+                                          <div id="public-comment" class="mt-[1.5em] max-h-[15em] overflow-y-auto">
+                                          <div class="block mb-[1.5em]">
+                                              <div class="flex">
+                                                  <div class="">
+                                                  
+                                              </div>
+                                        <div class="flex w-full mx-auto my-3 md:my-0 md:ml-[0em] md:mr-[1.5em]">
+                                          <div>
+                                            <div class="flex">
+                                                <p class="my-auto font-extrabold text-blue-500 text-md">'.$comment['Username'].'</p>
+                                                    <p class="my-auto ml-4 text-gray-500 text-md">1 day ago</p>
+                                            </div>
+                                                <div class="">
+                                                    <p class="text-black text-sm md:text-md leading-tight">'.$comment['Comment'].'</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                           </div>
+                                       </div>
+                                       <hr class="mr-0 md:mr-5">
+                                          ';
+                                        }
+                                      echo '</div>
+                                      </div>
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>' ;
+                        }
+                        ?>
+                  </div>
             </div>
+          </div>
+      </div>
           </div>
         </div>
       </div>
@@ -374,6 +518,15 @@
           $("#body").removeClass("overflow-hidden");
         });
       });
+      $(document).ready(function() {
+          var $par = $('div.comment-section');
+          $par.hide();
+          $('.comment-button').click(function(e) {
+            var $comm = $(this).siblings('.comment-section').slideToggle('slow');
+            $par.not($comm).slideUp('slow');
+            e.preventDefault();
+          });
+        });
     </script>
 </body>
 </html>

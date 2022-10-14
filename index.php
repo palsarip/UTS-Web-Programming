@@ -131,8 +131,12 @@
           // $dataComment = $resultComment->fetch(PDO::FETCH_ASSOC);
 
           while($data = $result->fetch(PDO::FETCH_ASSOC)){
+            $sqlComments = "SELECT * FROM Comments WHERE ID_Post = " . $data['ID_Post'];
+
+            $commentRes = $db->prepare($sqlComments);
+            $commentRes->execute();
             echo ' <div class="w-full mb-[3em]">
-            <div class=" bg-white shadow-lg rounded-md p-5" data-aos="fade-up" data-aos-delay="500" data-aos-duration="500">
+            <div class=" bg-white shadow-lg rounded-md p-5">
               <div class="flex">
                 <div id="vote" class="hidden mr-[1em] lg:block">
                   <div class="inline w-[2em] text-center">
@@ -166,7 +170,7 @@
                         <p >'.$data['Title'].'</p>
                       </div>
                     </div>
-                    <div class="max-w-[10em] my-3">
+                    <div class="my-3">
                       <div class="text-md font-normal">
                         <p>'.$data['Description'].'</p>
                       </div>
@@ -201,7 +205,7 @@
                         </div>
                         </button>
                         <div id="'.$data['ID_Post'].'" class="comment-section w-full mt-[1.5em]">
-                          <form action="">
+                          <form action="./databases/process/comment_process.php" method="POST">
                             <div class="block md:flex justify-between">
                               <div class="flex justify-start md:block w-[5em]">
                                 <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
@@ -211,16 +215,41 @@
                               </div>
                                 <div class="flex w-full mx-auto my-3 md:my-0 md:ml-[0.5em] md:mr-[1.5em]">
                                   <textarea id="message" name="Comment" rows="4" class="form-control block max-h-[3em] p-2.5 w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100" placeholder="Enter your comment..." required></textarea>
+                                  <input type="hidden" name="post_id" value="'.$data['ID_Post'].'" />
                                 </div>
                               <div class="flex justify-end">
-                              <button href="#" class="flex items-center justify-center py-2 px-3 w-[8em] max-h-[2.25em] my-0 text-base font-normal rounded-full bg-blue-500 text-white hover:bg-blue-600 ease-out duration-100">
+                              <button type="submit" class="flex items-center justify-center py-2 px-3 w-[8em] max-h-[2.25em] my-0 text-base font-normal rounded-full bg-blue-500 text-white hover:bg-blue-600 ease-out duration-100">
                                   <span class="text-sm font-bold mt-0.5 ml-1">Add Comment</span>
                               </buttton>
                               </div>
                             </div>
                           </form>
                           <div class="mt-[1.5em] max-h-[15em] overflow-y-auto">';
-                            // echo $data['Comment'];
+                          while($comment = $commentRes->fetch(PDO::FETCH_ASSOC)) {
+                            echo '
+                            <div id="public-comment" class="mt-[1.5em] max-h-[15em] overflow-y-auto">
+                            <div class="block mb-[1.5em]">
+                                <div class="flex">
+                                    <div class="">
+                                    
+                                </div>
+                          <div class="flex w-full mx-auto my-3 md:my-0 md:ml-[0em] md:mr-[1.5em]">
+                            <div>
+                              <div class="flex">
+                                  <p class="my-auto font-extrabold text-blue-500 text-md">'.$comment['Username'].'</p>
+                                      <p class="my-auto ml-4 text-gray-500 text-md">1 day ago</p>
+                              </div>
+                                  <div class="">
+                                      <p class="text-black text-sm md:text-md leading-tight">'.$comment['Comment'].'</p>
+                                  </div>
+                              </div>
+                              </div>
+                              </div>
+                             </div>
+                         </div>
+                         <hr class="mr-0 md:mr-5">
+                            ';
+                          }
                         echo '</div>
                         </div>
                       </div>
@@ -505,7 +534,6 @@
                       <div class="mb-5">
                       <label for="Category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select an option</label>
                         <select id="Category" name="Category" class="form-control w-full my-2 border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent ease-out duration-100">
-                          <option selected>Choose a category</option>
                           <option value="PHP">PHP</option>
                           <option value="C">C</option>
                           <option value="Javascript">Javascript</option>
