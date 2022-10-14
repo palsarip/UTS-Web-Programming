@@ -8,10 +8,13 @@
     $category = $_POST['Category'];
     $creator_username = $_SESSION['Username'];
     $creator_id = $_SESSION['ID_User'];
+    $creator_picture = $_SESSION['Picture'];
+
+
 
     // SQL Query
     // $sql = "INSERT INTO post (Title, Description, Likes, Author, Category, Created_At) VALUES (?, ?, ?, ?, ?, ?)";
-    $sql = "INSERT INTO post (Title, Description, Category, Creator_ID, Creator_Username) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO post (Title, Description, Category, Creator_Picture, Creator_ID, Creator_Username) VALUES (?, ?, ?, ?, ?, ?)";
 
     $sql2 = "INSERT INTO category (ID_Post, Category) VALUES (?, ?)";
 
@@ -19,7 +22,8 @@
     $result = $db->prepare($sql);
     $result2 = $db->prepare($sql2);
     // $result->execute([$title, $description, $likes, $author, $category, $created_at]);
-    $result->execute([$title, $description, $category, $creator_id, $creator_username]);
+    
+    $result->execute([$title, $description, $category, $creator_picture, $creator_id, $creator_username]);
     $result2->execute([$db->lastInsertId(), $category]);
 
     header("Location: ../../index.php");
