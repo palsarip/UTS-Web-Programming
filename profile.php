@@ -168,7 +168,7 @@
                 </div>
             </div>
             <div class="w-full h-[auto] bg-white rounded pl-[1.5em] pr-[1.5em] pb-[1.5em] pt-[0.65em] md:pl-[2em] md:pr-[2em] md:pb-[2em] md:pt-[0.5em]">
-              <form action="./databases/process/update_process.php" method="POST">
+              <form action="./databases/process/update_process.php" method="POST" enctype="multipart/form-data">
               <div class="flex justify-end">
                 <div class="flex mb-[2em]">
                
@@ -224,7 +224,7 @@
         }else{
           echo '
           <div id="profile" class="w-full rounded-md shadow-lg">
-          <form action="./databases/process/update_process.php" method="POST">
+          <form action="./databases/process/update_process.php" method="POST" enctype="multipart/form-data">
           <div class="w-full h-[8em] md:h-[9em] xl:h-[9.5em] bg-gradient-to-r from-sky-500 to-blue-500 rounded-t-md p-[1em] pt-[2em] ">
             <div class="flex justify-end mr-0 md:mr-2 xl:mr-4">
                 <span class="text-xl text-white font-extrabold">'.$row['Role'].'</span>
@@ -232,7 +232,7 @@
                 <div id="profile-header" class="flex">
                     <div class=" ml-[0em] md:ml-[1em] xl:ml-[2em] mt-[3em] bg-gray-500 rounded-full border-4 xl:border-8 border-white shadow-md">
                       <label for="profile-image" class="cursor-pointer">
-                          <img class="w-[5.5em] h-[5.5em] md:w-[7.5em] md:h-[7.5em] xl:w-[10em] xl:h-[10em]" src="./uploads/profile'.$row['Picture'].'" alt="">
+                          <img class="w-[5.5em] h-[5.5em] md:w-[7.5em] md:h-[7.5em] xl:w-[10em] xl:h-[10em] rounded-full" src="./uploads/profile/'.$row['Picture'].'" alt="">
                           <input id="profile-image" type="file" class="form-control hidden" name="Picture" />
                       </label>
                     </div>

@@ -29,7 +29,8 @@
   $result = $db->prepare($sql);
   $result->execute();
 
-  $sql2 = "SELECT *, COUNT(Comments.ID_Post) AS 'Comment_Count' From Post LEFT JOIN Comments ON Post.ID_Post = Comments.ID_Post GROUP BY Post.ID_Post ORDER BY Post.ID_Post DESC";
+  $sql2 = "SELECT *, COUNT(Comments.ID_Post) AS 'Comment_Count' From Post LEFT JOIN Comments ON Post.ID_Post = Comments.ID_Post GROUP BY Post.ID_Post ORDER BY Post.ID_Post";
+
   $result2 = $db->prepare($sql2);
   $result2->execute();
 
@@ -233,7 +234,7 @@
                                                     <a href='profile.php?id={$row['ID_User']}' class='font-medium py-3 px-3 text-white rounded-md bg-blue-500 hover:bg-blue-700 ease-out duration-100'>
                                                         Profile
                                                     </a>
-                                                    <a href='./databases/process/_user_process.php?id={$row['ID_User']}' class='font-medium py-3 px-3 text-white rounded-md bg-red-500 hover:bg-red-700 ease-out duration-100'>
+                                                    <a href='./databases/process/delete_user_process.php?id={$row['ID_User']}' class='font-medium py-3 px-3 text-white rounded-md bg-red-500 hover:bg-red-700 ease-out duration-100'>
                                                     Delete
                                                   </a>
                                                 </div>

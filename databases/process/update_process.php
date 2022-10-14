@@ -20,7 +20,7 @@
         $data = [$first_name, $last_name, $email, $picture, $filename,  $_SESSION['ID_User']];
         $stmt->execute($data);
 
-        move_uploaded_file($tmp, "../../uploads/profile/".$picture);
+        move_uploaded_file($tmp, "../../uploads/profile/" . $filename);
 
         header("Location: ../../profile.php?id=" . $_SESSION['ID_User']);
     }
