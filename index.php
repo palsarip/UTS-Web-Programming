@@ -14,57 +14,30 @@
     src="https://code.jquery.com/jquery-3.6.1.js"
     integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>KOMODO</title>
 </head>
 <?php
   session_start();
   require_once("./databases/db.php");
 ?>
-<body id="body" class="bg-blue-50 h-[auto]">
+<body id="body" class="bg-blue-50 h-[auto] mb-[3em] lg:mb-auto">
     <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-10">
         <div class="flex justify-between mx-auto px-4 sm:px-6 lg:px-[2rem] xl:px-[10rem]">
             <a href="index.php" class="text-2xl font-black"><span class="text-blue-500">KOM</span>ODO</a>
-            <div class="hidden w-96 md:flex">
-                <form class="w-full max-w-md hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 ">   
-                    <label class="sr-only">Search</label>
-                    <div class="relative w-full">
-                        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none ">
-                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                        </div>
-                        <input type="text" class="bg-slate-100 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5 focus:outline-none focus:border-blue-500 focus:ring-blue-500 block w-full rounded-md sm:text-md focus:ring-2 ease-out duration-200" placeholder="Search for Discussions" required="">
-                    </div>
-                </form>
-            </div>
         <?php
           if(!isset($_SESSION['User_ID']) && !isset($_SESSION['Username'])){
-            echo '<div class="hidden lg:flex">
-            <a href="register.php" class="flex mr-4 items-center justify-center px-[2rem] py-2 w-full rounded-full bg-none border-2 border-blue-500 text-black hover:bg-blue-600 hover:text-white ease-out duration-100">
+            echo '<div class="flex">
+            <a href="register.php" class="flex mr-2 md:mr-4 items-center justify-center px-[1rem] md:px-[2rem] py-0 lg:py-2 w-full rounded-full bg-none border-2 border-blue-500 text-black hover:bg-blue-600 hover:text-white ease-out duration-100">
                 <span class="text-md font-bold">Signup</span>
             </a>
-            <a  href="./login.php" class="flex items-center justify-center px-[2rem] py-2 w-full rounded-full bg-blue-500 text-white hover:bg-blue-600">
+            <a  href="./login.php" class="flex items-center justify-center px-[1rem] md:px-[2rem] py-0 lg:py-2 w-full rounded-full bg-blue-500 text-white hover:bg-blue-600">
                 <span class="text-md font-bold">Login</span>
             </a>
           </div>
-          <div class="relative ml-3 block lg:hidden">
-            <div>
-              <a type="button" class="flex rounded-full bg-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
-                <span class="sr-only">Open user menu</span>
-                <img class="h-10 w-10 rounded-full" src="https://svgsilh.com/svg/659651-9e9e9e.svg" alt="">
-              </a>
-            </div>
-              <div class="absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden ease-out duration-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" >
-                <a href="./login.php" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Login</a>
-                <a href="register.php" class="block px-4 py-2 text-sm text-gray-700  hover:text-black ease-in-out duration-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Signup</a>
-            </div>
           </div>';
           }else{
             echo '<div class="inset-y-0 right-0 flex items-center">
-                    <button type="button" class="rounded-full p-1 text-gray-400 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200">
-                      <span class="sr-only">View notifications</span>
-                      <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-                      </svg>
-                    </button>
               <div class="relative ml-3">
                 <div>
                   <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
@@ -141,7 +114,7 @@
         <?php
           require_once('./controller/time_converter.php');
 
-          $sqlPosts = "SELECT *, COUNT(Comments.ID_Post) AS 'Comment_Count' From Post LEFT JOIN Comments ON Post.ID_Post = Comments.ID_Post GROUP BY Post.ID_Post ORDER BY Post.ID_Post DESC";
+          $sqlPosts = "SELECT * FROM post ORDER BY Created_At DESC";
 
           // "SELECT *, COUNT(Comments.ID_Post) AS Comment_Count, FROM Post LEFT JOIN Comments ON Post.ID_Post = Comments.ID_Post GROUP BY Post.ID_Post ORDER BY Post.ID_Post DESC";
 
@@ -159,7 +132,7 @@
 
           while($data = $result->fetch(PDO::FETCH_ASSOC)){
             echo ' <div class="w-full mb-[3em]">
-            <div class=" bg-white shadow-lg rounded-md p-5">
+            <div class=" bg-white shadow-lg rounded-md p-5" data-aos="fade-up" data-aos-delay="500" data-aos-duration="500">
               <div class="flex">
                 <div id="vote" class="hidden mr-[1em] lg:block">
                   <div class="inline w-[2em] text-center">
@@ -221,7 +194,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                           </svg>
-                          <p class="my-auto mx-2 text-sm">'.$data['Comment_Count'].'</p>
+                          <p class="my-auto mx-2 text-sm">'.''.'</p>
                         </div>
                         <div class="inline-flex md:hidden">
                           <p class="my-auto text-sm">'.'Show comments'.'</p>
@@ -247,7 +220,7 @@
                             </div>
                           </form>
                           <div class="mt-[1.5em] max-h-[15em] overflow-y-auto">';
-                            echo $data['Comment'];
+                            // echo $data['Comment'];
                         echo '</div>
                         </div>
                       </div>
@@ -395,32 +368,59 @@
       <div class="fixed bottom-0 left-0 w-full bg-white shadow-lg">
         <div class="flex justify-between items-center px-10 py-3  text-gray-500">
             <div>
-              <a href="../UTS/index.php" class="text-blue-500">
+              <a href="./index.php" class="text-blue-500">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
                 <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                 <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
               </svg>
               </a>
                 </div>
+                <?php
+                  if(!isset($_SESSION['User_ID']) && !isset($_SESSION['Username'])){
+                    echo '
+
+                    ';
+                  }else{
+                    echo '
+                    <div>
+                      <button id="on-mobile-add-discussion" type="button" class="flex">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="url(#grad1)" stroke="none" class="w-8 h-8">
+                          <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+                              <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+                            </linearGradient>
+                          </defs>
+                          <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+                        </svg>
+                      </button>
+                    </div>
+                    ';
+                  }
+                ?>
             <div>
-              <button id="on-mobile-add-discussion" type="button" class="flex">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="url(#grad1)" stroke="none" class="w-8 h-8">
-                  <defs>
-                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
-                    </linearGradient>
-                  </defs>
-                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+              <a href="./explore.php">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                  <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
+                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z" clip-rule="evenodd" />
                 </svg>
-              </button>
+              </a>
             </div>
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
-                <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
-                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z" clip-rule="evenodd" />
-              </svg>
-            </div>
+            <?php
+                  if((!isset($_SESSION['User_ID']) && !isset($_SESSION['Username'])) || $_SESSION['Role'] !== 'Admin'){
+                    echo '';
+                  }else{
+                    echo '
+                    <div>
+                      <a href="./admin.php"">
+                        <svg aria-hidden="true" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                          <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                    ';
+                  }
+                ?>
         </div>
       </div>
     </div>
@@ -567,6 +567,10 @@
             e.preventDefault();
           });
         });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
     </script>
 </body>
 </html>

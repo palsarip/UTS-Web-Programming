@@ -22,6 +22,8 @@
 
         move_uploaded_file($tmp, "../../uploads/profile/" . $filename);
 
+        $_SESSION['Picture'] = $picture;
+
         header("Location: ../../profile.php?id=" . $_SESSION['ID_User']);
     }
 ?>
