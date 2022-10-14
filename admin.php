@@ -29,7 +29,7 @@
   $result = $db->prepare($sql);
   $result->execute();
 
-  $sql2 = "SELECT *, COUNT(Comments.ID_Post) AS 'Comment_Count' From Post LEFT JOIN Comments ON Post.ID_Post = Comments.ID_Post GROUP BY Post.ID_Post ORDER BY Post.ID_Post";
+  $sql2 = "SELECT * FROM post";
 
   $result2 = $db->prepare($sql2);
   $result2->execute();
@@ -263,7 +263,7 @@
                                             <div class="flex items-center">
                                                 Title
                                             </div>
-                                        </th>
+                                        <!-- </th>
                                         <th scope="col" class="py-4 px-6">
                                             <div class="flex items-center">
                                                 Likes
@@ -273,7 +273,7 @@
                                             <div class="flex items-center">
                                                 Comments
                                             </div>
-                                        </th>
+                                        </th> -->
                                         <th scope="col" class="py-4 px-6">
                                             <div class="flex items-center">
                                                 Category
@@ -303,8 +303,6 @@
                                             <td class='py-[2em] px-6 text-black'>
                                                 {$row2['Title']}
                                             </td>
-                                            <td class='py-[2em] px-6 text-black'>{$row2['Likes']}</td>
-                                            <td class='py-[2em] px-6 text-black'>{$row2['Comment_Count']}</td>
                                             <td class='py-[2em] px-6 text-black'>{$row2['Category']}</td>
                                             <td class='py-[2em] px-6 text-black'>{$row2['Created_At']}</td>
                                             <td class='py-[2em] px-6 text-black'>{$row2['Creator_Username']}</td>

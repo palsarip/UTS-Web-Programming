@@ -52,7 +52,7 @@
             <div>
               <a type="button" class="flex rounded-full bg-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
                 <span class="sr-only">Open user menu</span>
-                <img class="h-10 w-10 rounded-full" src="https://svgsilh.com/svg/659651-9e9e9e.svg" alt="">
+                <img class="h-10 w-10 rounded-full" src="./uploads/profile/'.$_SESSION['Picture'].'" alt="">
               </a>
             </div>
               <div class="absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden ease-out duration-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" >
@@ -72,7 +72,7 @@
                 <div>
                   <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
                     <span class="sr-only">Open user menu</span>
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                    <img class="h-10 w-10 rounded-full" src="./uploads/profile/'.$_SESSION['Picture'].'" alt="">
                   </button>
                 </div>';
                 echo '<div id="user-menu-dropdown" class="absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden ease-out duration-100" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" >';
@@ -174,7 +174,7 @@
                                         <button type="button" class="flex my-3 rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
                                           <span class="sr-only">Open user menu</span>
                                           <a href="profile.php?id='.$data['Creator_ID'].'">
-                                            <img class="h-10 w-10 rounded-full" src="'.$data['Creator_Picture'].'" alt="">
+                                            <img class="h-10 w-10 rounded-full" src="./uploads/profile/'.$data['Creator_Picture'].'" alt="">
                                           </a>
                                         </button>
                                         <div class="flex my-auto ml-3">
@@ -230,7 +230,7 @@
                                               <div class="flex justify-start md:block w-[5em]">
                                                 <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 ease-out duration-200" id="user-menu-button" aria-expanded="true" aria-haspopup="true">
                                                   <span class="sr-only">Open user menu</span>
-                                                  <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                                  <img class="h-10 w-10 rounded-full" src="./uploads/profile/'.$data['Creator_Picture'].'" alt="">
                                                 </button>
                                               </div>
                                                 <div class="flex w-full mx-auto my-3 md:my-0 md:ml-[0.5em] md:mr-[1.5em]">
