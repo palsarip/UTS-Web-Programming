@@ -28,7 +28,7 @@
   $row = $result->fetch(PDO::FETCH_ASSOC);
 
 ?>
-<body id="body" class="bg-blue-50 h-auto">
+<body id="body" class="bg-blue-50 h-auto mb-[3em]">
     <nav class="sticky top-0  w-full h-auto bg-white m-auto py-4 drop-shadow-md z-10">
         <div class="flex justify-between mx-auto px-4 sm:px-6 lg:px-[2rem] xl:px-[10rem]">
             <a href="index.php" class="text-2xl font-black"><span class="text-blue-500">KOM</span>ODO</a>
@@ -144,15 +144,11 @@
           </div>
         </aside>
       </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
       <div id="profile" class="w-full rounded-md shadow-lg">
-=======
       <?php
         if($_SESSION['ID_User'] !== $id && $_SESSION['Role'] !== 'Admin'){
           echo '
           <div id="profile" class="w-full rounded-md shadow-lg">
->>>>>>> Stashed changes
           <div class="w-full h-[8em] md:h-[9em] xl:h-[9.5em] bg-gradient-to-r from-sky-500 to-blue-500 rounded-t-md p-[1em] pt-[2em] ">
             <div class="flex justify-end mr-0 md:mr-2 xl:mr-4">
                 <span class="text-xl text-white font-extrabold">'.$row['Role'].'</span>
@@ -306,9 +302,7 @@
                       </div>
                       </div>
                   </form>
-<<<<<<< Updated upstream
                 </div>
-=======
       <div id="profile" class="w-full">
           <div class="w-full bg-white shadow-lg rounded-xl p-[2em]">
             <div class="flex">
@@ -316,9 +310,6 @@
                 
                 </div>
               <div id="discussion" class="">
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
               </div>
           ';
         }
